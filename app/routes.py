@@ -1,6 +1,6 @@
 from app import app
 
-@app.rotas('/')
-@app.rotas('/index')
+@app.route('/')
+@app.route('/index')
 def index():
     return "Hello, World!"
