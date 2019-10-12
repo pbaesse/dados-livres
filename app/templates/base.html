@@ -1,16 +1,26 @@
 <html>
 
 <head>
-    <title>Teste</title>
+    <title>Plataforma</title> 
 </head>
 <body>
     <div>
-
-        Plataforma:
-        <a href="/login"> Login </a>
-    </div>
-    
+        Páginas:
+        <a href="{{ url_for('index') }}"> Home </a>
+        <a href="{{ url_for('login') }}"> Login </a>
+    </div> 
     <hr>
+    
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    
     {% block content %}{% endblock %}       
 </body>
 
