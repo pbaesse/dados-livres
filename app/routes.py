@@ -1,12 +1,17 @@
 from app import app
-from flask_babel import _
+from flask_babel import _, get_locale
+
+@app.before_request
+def before_request():
+    # ...
+    g.locale = str(get_locale())
 
 @app.route('/')
 @app.route('/index')
 def index():
     return "Hello, World!" #criar página principal
 
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, g
   
 from app.forms import LoginForm
 @app.route('/login', methods=['GET', 'POST'])
