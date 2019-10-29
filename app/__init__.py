@@ -12,9 +12,11 @@ migrate = Migrate(app, db)
 
 from flask_babel import Babel, lazy_gettext as _l
 babel = Babel(app)
+
 @babel.localeselector
 def get_locale():
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
-
+    # return request.accept_languages.best_match(app.config['LANGUAGES'])
+    return 'en'
+    
 from app import routes, models
 
