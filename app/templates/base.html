@@ -1,16 +1,15 @@
-<html>
-
-<head>
-    <title>Plataforma</title> 
-</head>
-<body>
+    {% block title %}
+    	{% if title %} {{ title }} - Plataforma 
+    	{% else %} {{ _('Bem vindo a Plataforma!') }} 
+    	{% endif %}
+    {% endblock %}
+    
     <div>
         Páginas:
         <a href="{{ url_for('index') }}"> Home </a>
         <a href="{{ url_for('login') }}"> Login </a>
     </div> 
     <hr>
-    
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <ul>
@@ -20,8 +19,4 @@
     </ul>
     {% endif %}
     {% endwith %}
-    
-    {% block content %}{% endblock %}       
-</body>
-
-</html>
+    {% block content %}{% endblock %} 
