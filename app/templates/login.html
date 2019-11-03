@@ -11,16 +11,17 @@
             {% for error in form.username.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </P>
-        <P>
+        </p>
+        <p>
             {{ form.password.label }} <br>
             {{ form.password(size=32) }}<br>
             {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </P>
+        </p>
         <P> {{ form.remember_me() }} {{ form.remember_me.label }} </P>
         <P> {{ form.submit() }} </P>
+        <p>Novo usuário? <a href="{{ url_for('register') }}">Clique para se registrar!</a></p>
     </form>
     
 {% endblock %}
