@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-29 20:33-0300\n"
+"POT-Creation-Date: 2019-11-02 21:20-0300\n"
 "PO-Revision-Date: 2019-10-29 20:33-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -20,25 +20,29 @@ msgstr ""
 
 #: app/forms.py:8
 msgid "Nome"
-msgstr ""
+msgstr "Name"
 
 #: app/forms.py:9
 msgid "Senha"
-msgstr ""
+msgstr "Password"
 
 #: app/forms.py:10
 msgid "Lembre de mim"
-msgstr ""
+msgstr "Remember me"
 
 #: app/forms.py:11
 msgid "Entrar"
-msgstr ""
+msgstr "Log in"
 
-#: app/routes.py:21
-msgid "Login solicitado para o usuário {}, Lembre de mim={}"
-msgstr ""
+#: app/routes.py:26
+msgid "Nome de usuário ou senha inválidos"
+msgstr "Invalid username or password"
 
-#: app/routes.py:24
-msgid "Fazer Login"
-msgstr ""
+#: app/routes.py:30
+msgid "Conecte-se"
+msgstr "Log in"
+
+#: app/templates/base.html:3
+msgid "Bem vindo a Plataforma!"
+msgstr "Welcome to Plataforma!"
 
