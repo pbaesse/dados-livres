@@ -20,6 +20,8 @@ def get_locale():
 
 from flask_moment import Moment
 moment = Moment(app)
-    
-from app import routes, models
 
+from flask_login import LoginManager
+login = LoginManager(app)
+
+from app import routes, models
