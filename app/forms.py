@@ -1,4 +1,3 @@
-#!/usr/bin/python -tt
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTO, ValidationError, \
@@ -14,11 +13,10 @@ class LoginForm(FlaskForm):
     
 class RegistrationForm(FlaskForm):
 	username = StringField(_l('Nome'), validators=[DataRequired()])
-    email = StringField(_l('E-mail'), validators=[DataRequired(), Email()])
+    email = StringField(_l('Email'), validators=[DataRequired(), Email()])
     password = PasswordField(_l('Senha'), validators=[DataRequired()])
-    password2 = PasswordField(
-        _l('Repita sua senha'), validators=[DataRequired(),
-                                           EqualTo('senha')])
+    password2 = PasswordField(_l('Repita sua senha'),
+    	validators=[DataRequired(), EqualTo('senha')])
     submit = SubmitField(_l('Registrar'))
     
     def validate_username(self, username):

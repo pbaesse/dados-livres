@@ -3,9 +3,10 @@ from flask import render_template, flash, redirect, url_for, request, g
 from flask_login import logout_user, current_user, login_user, login_required
 from werkzeug.urls import url_parse
 from flask_babel import _, get_locale
-from app import app
+from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User
+from app.email import send_password_reset_email
 
 @app.before_request
 def before_request():
