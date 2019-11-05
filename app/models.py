@@ -1,16 +1,30 @@
-from app import db
+from datetime import datetime
+from time import time
+from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
+from app import app, db, login
 
-class Usuario(db.Model):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(200), index=True, unique=True)
+    username = db.Column(db.String(200), index=True, unique=True)
     email = db.Column(db.String(200), index=True, unique=True)
-    senha = db.Column(db.String(200))
-    apelido = db.Column(db.String(150), index=True)
-    descricao = db.Column(db.String(500), index=True)
+    password_hash = db.Column(db.String(200))
+    nickname = db.Column(db.String(150), index=True)
+    description = db.Column(db.String(500), index=True)
     
     def __repr__(self):
-        return '<Usuario {}>'.format(self.nome)
+        return '<User {}>'.format(self.username)
+        
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
 
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+        
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+    
 class tipoUsuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(200), index=True)
