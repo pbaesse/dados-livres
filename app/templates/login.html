@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Tela de Login</h1>
-    
+    <h1>Tela de Login</h1>  
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
@@ -20,8 +19,7 @@
             {% endfor %}
         </p>
         <P> {{ form.remember_me() }} {{ form.remember_me.label }} </P>
-        <P> {{ form.submit() }} </P>
-        
+        <P> {{ form.submit() }} </P>      
     </form>
-    
+    <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
 {% endblock %}
