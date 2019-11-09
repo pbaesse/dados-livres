@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-11-02 21:20-0300\n"
-"PO-Revision-Date: 2019-10-29 20:33-0300\n"
+"POT-Creation-Date: 2019-11-09 01:13-0300\n"
+"PO-Revision-Date: 2019-11-08 22:53-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -18,31 +18,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
 
-#: app/forms.py:8
+#: app/forms.py:8 app/forms.py:14
 msgid "Nome"
 msgstr "Name"
 
-#: app/forms.py:9
+#: app/forms.py:9 app/forms.py:16
 msgid "Senha"
 msgstr "Password"
 
 #: app/forms.py:10
 msgid "Lembre de mim"
-msgstr "Remember me"
+msgstr "remember me"
 
-#: app/forms.py:11
+#: app/forms.py:11 app/routes.py:48
 msgid "Entrar"
-msgstr "Log in"
+msgstr "Login"
 
-#: app/routes.py:26
+#: app/forms.py:15
+msgid "Email"
+msgstr "Email"
+
+#: app/forms.py:17
+msgid "Repita a senha"
+msgstr "Repeat Password"
+
+#: app/forms.py:19 app/routes.py:67
+msgid "Registrar"
+msgstr "Register"
+
+#: app/forms.py:24
+msgid "Por favor, use um nome de usuário diferente."
+msgstr "Please use a different username."
+
+#: app/forms.py:29
+msgid "Por favor, use um endereço de e-mail diferente."
+msgstr "Please use a different email address."
+
+#: app/routes.py:31
+msgid "Inicial"
+msgstr "Home"
+
+#: app/routes.py:41
 msgid "Nome de usuário ou senha inválidos"
-msgstr "Invalid username or password"
+msgstr "Invalid username or password!"
 
-#: app/routes.py:30
-msgid "Conecte-se"
-msgstr "Log in"
+#: app/routes.py:65
+msgid "Parabéns, agora você é um usuário registrado!"
+msgstr "Congratulations, you are now a registered user!"
 
 #: app/templates/base.html:3
 msgid "Bem vindo a Plataforma!"
-msgstr "Welcome to Plataforma!"
+msgstr "Welcome to Plataforma"
 
