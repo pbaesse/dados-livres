@@ -1,23 +1,23 @@
 # Plataforma Livre de Dados Abertos
 
-## Descrição (O que é)
+### Descrição (O que é)
 
 -------------------------------------------------
 
-## Problemas conhecidos e possíveis melhorias
+### Problemas conhecidos e possíveis melhorias
 
 -------------------------------------------------
 
-## Como instalar
+### Como instalar
 
 -------------------------------------------------
 
-## Lista de autores
+### Lista de autores
 
 -------------------------------------------------
 
-## Licença
+### Licença
 
 -------------------------------------------------
 
-## Contato
+### Contato
