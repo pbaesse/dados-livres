@@ -4,12 +4,22 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import app, db, login
 
+class tipoUsuario(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(200), index=True)
+    
+    def __repr__(self):
+        return '<tipoUsuario {}>'.format(self.nome)
+        
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(200), index=True, unique=True)
     email = db.Column(db.String(200), index=True, unique=True)
     password_hash = db.Column(db.String(150))
-
+    about_me = db.Column(db.String(300))
+    nickname = db.Column(db.String(150))
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+ 
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
@@ -22,24 +32,17 @@ class User(UserMixin, db.Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
-    
-class tipoUsuario(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(200), index=True)
-    
-    def __repr__(self):
-        return '<tipoUsuario {}>'.format(self.nome)  
 
-class fonteDados(db.Model):
+class Source(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    titulo = db.Column(db.String(500), index=True)
-    esfera = db.Column(db.String(150), index=True)
-    descricao = db.Column(db.String(500), index=True)
-    linkOficial = db.Column(db.String(500), index=True)
-    linkDataset = db.Column(db.String(500), index=True)
+    title = db.Column(db.String(200), index=True, unique=True)
+    sphere = db.Column(db.String(200), index=True)
+    description = db.Column(db.String(800), index=True)
+    officialLink = db.Column(db.String(250), index=True)
+    datasetLink = db.Column(db.String(250), index=True)
     
     def __repr__(self):
-        return '<Titulo {}>'.format(self.titulo)
+        return '<Source {}>'.format(self.title)
         
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
