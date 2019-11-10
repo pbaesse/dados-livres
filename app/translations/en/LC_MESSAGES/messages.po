@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-11-09 01:13-0300\n"
+"POT-Creation-Date: 2019-11-10 00:17-0300\n"
 "PO-Revision-Date: 2019-11-08 22:53-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
 
-#: app/forms.py:8 app/forms.py:14
+#: app/forms.py:8 app/forms.py:14 app/forms.py:32
 msgid "Nome"
 msgstr "Name"
 
@@ -54,8 +54,20 @@ msgstr "Please use a different username."
 msgid "Por favor, use um endereço de e-mail diferente."
 msgstr "Please use a different email address."
 
+#: app/forms.py:33
+msgid "Apelido"
+msgstr "Nickname"
+
+#: app/forms.py:34
+msgid "Sobre mim"
+msgstr "About me"
+
+#: app/forms.py:35
+msgid "Enviar"
+msgstr "Submit"
+
 #: app/routes.py:31
-msgid "Inicial"
+msgid "Início"
 msgstr "Home"
 
 #: app/routes.py:41
@@ -66,7 +78,18 @@ msgstr "Invalid username or password!"
 msgid "Parabéns, agora você é um usuário registrado!"
 msgstr "Congratulations, you are now a registered user!"
 
+#: app/routes.py:88
+msgid "Suas alterações foram salvas."
+msgstr "Your changes have been saved."
+
+#: app/routes.py:94
+msgid "Editar Perfil"
+msgstr "Edit profile"
+
 #: app/templates/base.html:3
 msgid "Bem vindo a Plataforma!"
 msgstr "Welcome to Plataforma"
+
+#~ msgid "Inicial"
+#~ msgstr "Home"
 
