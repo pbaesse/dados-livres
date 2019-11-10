@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Usuário: {{ user.username }}</h1>
+    {% if user.nickname %}<p>{{ user.nickname }}</p>{% endif %}
+    {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+    {% if user.last_seen %}<p>Visto pela última vez em: {{ user.last_seen }}</p>{% endif %}
+    
+    <hr>
+    {% for post in posts %}
+    <p>
+    {{ post.author.username }} diz: <b>{{ post.body }}</b>
+    </p>
+    {% endfor %}
+    
+    {% if user == current_user %}
+    <p><a href="{{ url_for('edit_profile') }}">Edite seu perfil aqui!</a></p>
+    {% endif %}
+    
+{% endblock %}
