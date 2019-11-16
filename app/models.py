@@ -4,13 +4,6 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import app, db, login
 
-class tipoUsuario(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(200), index=True)
-    
-    def __repr__(self):
-        return '<tipoUsuario {}>'.format(self.nome)
-        
 class User(UserMixin, db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(200), index=True, unique=True)
@@ -18,6 +11,7 @@ class User(UserMixin, db.Model):
 	password_hash = db.Column(db.String(150))
 	about_me = db.Column(db.String(300))
 	nickname = db.Column(db.String(150))
+	typeUser = db.Column(db.String(200))
 	last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 	source = db.relationship('Source', backref='author', lazy='dynamic')
 	software = db.relationship('Software', backref='author', lazy='dynamic')
@@ -98,6 +92,3 @@ class Denuncia(db.Model):
 	
 	def __repr__(self):
 		return '<Denuncia {}>'.format(self.tipo)
-        
-        
-db.create_all()
