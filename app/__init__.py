@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
 from flask_login import LoginManager
 from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
@@ -10,6 +11,8 @@ app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
 login = LoginManager(app)
 moment = Moment(app)
 babel = Babel(app)

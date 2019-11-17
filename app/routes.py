@@ -32,20 +32,20 @@ def index():
     
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first() 
-        if user is None or not user.check_password(form.password.data):
-            flash(_('Nome de usuário ou senha inválidos'))
-            return redirect(url_for('login'))
-        login_user(user, remember=form.remember_me.data)
-        next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('index')
-        return redirect(next_page)
-    return render_template('login.html', title=(_('Entrar')), form=form)
+	if current_user.is_authenticated:
+		return redirect(url_for('index'))
+	form = LoginForm()
+	if form.validate_on_submit():
+		user = User.query.filter_by(username=form.username.data).first() 
+		if user is None or not user.check_password(form.password.data):
+			flash(_('Nome de usuário ou senha inválidos'))
+			return redirect(url_for('login'))
+		login_user(user, remember=form.remember_me.data)
+		next_page = request.args.get('next')
+		if not next_page or url_parse(next_page).netloc != '':
+			next_page = url_for('index')
+		return redirect(next_page)
+	return render_template('login.html', title=(_('Entrar')), form=form)
     
 @app.route('/logout')
 def logout():
@@ -83,6 +83,7 @@ def edit_profile():
 	if form.validate_on_submit():
 		current_user.username = form.username.data
 		current_user.nickname = form.nickname.data
+		current_user.typeUser = form.typeUser.data
 		current_user.about_me = form.about_me.data
 		db.session.commit()
 		flash(_('Suas alterações foram salvas.'))
@@ -90,6 +91,7 @@ def edit_profile():
 	elif request.method == 'GET':
 		form.username.data = current_user.username
 		form.nickname.data = current_user.nickname
+		form.typeUser.data = current_user.typeUser
 		form.about_me.data = current_user.about_me
 	return render_template('edit_profile.html', title=(_('Editar Perfil')),
                            form=form)

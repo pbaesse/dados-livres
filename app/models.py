@@ -5,6 +5,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app import app, db, login
 
 class User(UserMixin, db.Model):
+	__tablename__ = "users"
+	
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(200), index=True, unique=True)
 	email = db.Column(db.String(200), index=True, unique=True)
@@ -13,8 +15,6 @@ class User(UserMixin, db.Model):
 	nickname = db.Column(db.String(150))
 	typeUser = db.Column(db.String(200))
 	last_seen = db.Column(db.DateTime, default=datetime.utcnow)
-	source = db.relationship('Source', backref='author', lazy='dynamic')
-	software = db.relationship('Software', backref='author', lazy='dynamic')
 	
 	def __repr__(self):
 		return '<User {}>'.format(self.username)
@@ -30,6 +30,8 @@ def load_user(id):
     return User.query.get(int(id))
 
 class Source(db.Model):
+	__tablename__ = "sources"
+	
 	id = db.Column(db.Integer, primary_key=True)
 	title = db.Column(db.String(200), index=True, unique=True)
 	sphere = db.Column(db.String(200), index=True)
@@ -37,12 +39,16 @@ class Source(db.Model):
 	officialLink = db.Column(db.String(300), index=True)
 	datasetLink = db.Column(db.String(300), index=True)
 	timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-	userSource_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+	
+	user = db.relationship('User', backref=db.backref('sources', lazy=True))
 	
 	def __repr__(self):
 		return '<Source {}>'.format(self.title)
         
 class Software(db.Model):
+	__tablename__ = "softwares"
+	
 	id = db.Column(db.Integer, primary_key=True)
 	title = db.Column(db.String(200), index=True, unique=True)
 	description = db.Column(db.String(800), index=True)
@@ -52,7 +58,9 @@ class Software(db.Model):
 	owner = db.Column(db.String(200), index=True)
 	dateCreation = db.Column(db.String(300), index=True)
 	dateRelease = db.Column(db.String(300), index=True)
-	userSoftware_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+	
+	user = db.relationship('User', backref=db.backref('softwares', lazy=True))
 	
 	def __repr__(self):
 		return '<Software {}>'.format(self.title)
