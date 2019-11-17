@@ -5,7 +5,7 @@ from werkzeug.urls import url_parse
 from flask_babel import _, get_locale
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm
-from app.models import User
+from app.models import User, Source, Software
 
 @app.before_request
 def before_request():
@@ -69,12 +69,12 @@ def register():
 @app.route('/user/<username>') ## Fontes do usuário
 @login_required
 def user(username):
-    user = User.query.filter_by(username=username).first_or_404()
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
-    return render_template('user.html', user=user, posts=posts) 
+	user = User.query.filter_by(username=username).first_or_404()
+	posts = [
+		{'author': user, 'body': 'Test post #1'},
+		{'author': user, 'body': 'Test post #2'}
+	]
+	return render_template('user.html', user=user, posts=posts) 
     
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -96,4 +96,12 @@ def edit_profile():
 	return render_template('edit_profile.html', title=(_('Editar Perfil')),
                            form=form)
 
-
+@app.route('/source', methods=['GET', 'POST'])
+def source():
+	form = Source()
+	return render_template('source.html', title(_('Cadastrar Fonte')), form=form)
+	
+@app.route('/software', methods=['GET', 'POST'])
+def software():
+	form = Software()
+	return render_template('software.html', title(_('Cadastrar Software')), form=form)

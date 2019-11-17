@@ -2,8 +2,9 @@
 
 {% block content %}
     <h1>Usuário: {{ user.username }}</h1>
-    {% if user.nickname %}<p>{{ user.nickname }}</p>{% endif %}
-    {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+    {% if user.nickname %}<p>Apelido: {{ user.nickname }}</p>{% endif %}
+    {% if user.typeUser %}<p>Tipo de usuário: {{ user.typeUser }}</p>{% endif %}
+	{% if user.about_me %}<p>Descrição: {{ user.about_me }}</p>{% endif %}
     {% if user.last_seen %}<p>Visto pela última vez em: {{ user.last_seen }}</p>{% endif %}
     
     <hr>
@@ -14,7 +15,9 @@
     {% endfor %}
     
     {% if user == current_user %}
-    <p><a href="{{ url_for('edit_profile') }}">Edite seu perfil aqui!</a></p>
+    <p><a href="{{ url_for('source') }}">Cadastre uma nova fonte de dados abertos aqui!</a></p>
+    <p><a href="{{ url_for('software') }}">Cadastre um software de dados abertos aqui!</a></p>
+    <p><a href="{{ url_for('edit_profile') }}">Edite seu perfil de usuário aqui!</a></p>
     {% endif %}
     
 {% endblock %}

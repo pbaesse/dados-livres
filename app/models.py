@@ -54,7 +54,7 @@ class Software(db.Model):
 	description = db.Column(db.String(800), index=True)
 	downloadLink = db.Column(db.String(300), index=True)
 	activeDevelopment = db.Column(db.String(200), index=True)
-	license= db.Column(db.String(200), index=True)
+	license = db.Column(db.String(200), index=True)
 	owner = db.Column(db.String(200), index=True)
 	dateCreation = db.Column(db.String(300), index=True)
 	dateRelease = db.Column(db.String(300), index=True)
