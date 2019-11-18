@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Nova Fonte de Dados Abertos!</h1>
+	<form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+        	{{ form.title.label}}<br>
+            {{ form.title(size=32) }}<br>
+            {% for error in form.title.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+        	{{ form.sphere.label}}<br>
+            {{ form.sphere(size=32) }}<br>
+            {% for error in form.sphere.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+        	{{ form.officialLink.label}}<br>
+            {{ form.officialLink(size=32) }}<br>
+            {% for error in form.officialLink.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+        	{{ form.datasetLink.label}}<br>
+            {{ form.datasetLink(size=32) }}<br>
+            {% for error in form.datasetLink.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+        	{{ form.description.label}}<br>
+            {{ form.description(size=32) }}<br>
+            {% for error in form.description.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+	</form>
+{% endblock %}

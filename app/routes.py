@@ -4,7 +4,7 @@ from flask_login import logout_user, current_user, login_user, login_required
 from werkzeug.urls import url_parse
 from flask_babel import _, get_locale
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, SourceForm, SoftwareForm
 from app.models import User, Source, Software
 
 @app.before_request
@@ -13,19 +13,19 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
     g.locale = str(get_locale())
-    
-@app.route('/', methods=['GET', 'POST']) ## Todas as fontes de todos os usuários
-@app.route('/index', methods=['GET', 'POST'])
+
+@app.route('/')
+@app.route('/index')  ## Todas as fontes de todos os usuários
 @login_required
 def index():
     posts = [
         {
-            'autor': {'nome': 'Daniel'},
-            'mensagem': 'Que dia lindo em SP!'
+            'author': {'username': 'John'},
+            'body': 'Beautiful day in Portland!'
         },
         {
-            'autor': {'nome': 'Paula'},
-            'mensagem': 'O filme dos Vingadore foi ótimo!'
+            'author': {'username': 'Susan'},
+            'body': 'The Avengers movie was so cool!'
         }
     ]
     return render_template('index.html', title=(_('Início')), posts=posts)
@@ -36,7 +36,7 @@ def login():
 		return redirect(url_for('index'))
 	form = LoginForm()
 	if form.validate_on_submit():
-		user = User.query.filter_by(username=form.username.data).first() 
+		user = User.query.filter_by(username=form.username.data).first()
 		if user is None or not user.check_password(form.password.data):
 			flash(_('Nome de usuário ou senha inválidos'))
 			return redirect(url_for('login'))
@@ -98,10 +98,10 @@ def edit_profile():
 
 @app.route('/source', methods=['GET', 'POST'])
 def source():
-	form = Source()
-	return render_template('source.html', title(_('Cadastrar Fonte')), form=form)
+	form = SourceForm()
+	return render_template('source.html', title=(_('Cadastrar Fonte')), form=form)
 	
 @app.route('/software', methods=['GET', 'POST'])
 def software():
-	form = Software()
-	return render_template('software.html', title(_('Cadastrar Software')), form=form)
+	form = SoftwareForm()
+	return render_template('software.html', title=(_('Cadastrar Software')), form=form)

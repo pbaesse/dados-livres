@@ -35,20 +35,21 @@ class EditProfileForm(FlaskForm):
 	about_me = TextAreaField(_('Sobre mim'), validators=[Length(min=0, max=200)])
 	submit = SubmitField(_('Enviar'))
 	
-class Source(FlaskForm):
+class SourceForm(FlaskForm):
 	title = StringField(_('Título'), validators=[DataRequired()])
 	sphere = StringField(_('Esfera'), validators=[DataRequired()])
 	officialLink = StringField(_('Link Oficial'), validators=[DataRequired()])
 	datasetLink = StringField(_('Link da Fonte de Dados'), validators=[DataRequired()])
 	description = TextAreaField(_('Descrição'), validators=[DataRequired()])
+	submit = SubmitField(_('Enviar'))
 	
-class Software(FlaskForm):
+class SoftwareForm(FlaskForm):
 	title = StringField(_('Título'), validators=[DataRequired()])
-	description = TextAreaField(_('Descrição'), validators=[DataRequired()])
-	downloadLink = StringField(_('Link para Download'), validators=[DataRequired()])
-	activeDevelopment = StringField(_('Desenvoledor Ativo'), validators=[DataRequired()])
 	license = StringField(_('Licença'), validators=[DataRequired()])
 	owner = StringField(_('Proprietário'), validators=[DataRequired()])
+	activeDevelopment = StringField(_('Desenvolvedor Ativo'), validators=[DataRequired()])
+	downloadLink = StringField(_('Link para Download'), validators=[DataRequired()])
 	dateCreation = StringField(_('Data de Criação'), validators=[DataRequired()])
 	dateRelease	= StringField(_('Data de Lançamento'), validators=[DataRequired()])
-
+	description = TextAreaField(_('Descrição'), validators=[DataRequired()])
+	submit = SubmitField(_('Enviar'))

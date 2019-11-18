@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Novo Software de Dados Abertos!</h1>
+	<form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+        	{{ form.title.label}}<br>
+            {{ form.title(size=32) }}<br>
+            {% for error in form.title.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+        	{{ form.license.label}}<br>
+            {{ form.license(size=32) }}<br>
+            {% for error in form.license.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+        	{{ form.owner.label}}<br>
+            {{ form.owner(size=32) }}<br>
+            {% for error in form.owner.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+        	{{ form.activeDevelopment.label}}<br>
+            {{ form.activeDevelopment(size=32) }}<br>
+            {% for error in form.activeDevelopment.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+         <p>
+        	{{ form.downloadLink.label}}<br>
+            {{ form.downloadLink(size=32) }}<br>
+            {% for error in form.downloadLink.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+         <p>
+        	{{ form.dateCreation.label}}<br>
+            {{ form.dateCreation(size=32) }}<br>
+            {% for error in form.dateCreation.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+        	{{ form.dateRelease.label}}<br>
+            {{ form.dateRelease(size=32) }}<br>
+            {% for error in form.dateRelease.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+        	{{ form.description.label}}<br>
+            {{ form.description(size=32) }}<br>
+            {% for error in form.description.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+	</form>
+{% endblock %}
