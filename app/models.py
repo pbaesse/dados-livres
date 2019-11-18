@@ -27,7 +27,7 @@ class User(UserMixin, db.Model):
 
 @login.user_loader
 def load_user(id):
-    return User.query.get(int(id))
+	return User.query.get(int(id))
 
 class Source(db.Model):
 	__tablename__ = "sources"
