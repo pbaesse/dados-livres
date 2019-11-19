@@ -2,13 +2,14 @@
 # Copyright (C) 2019 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FULL NAME <EMAIL@ADDRESS>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-11-10 00:17-0300\n"
-"PO-Revision-Date: 2019-11-08 22:53-0300\n"
+"POT-Creation-Date: 2019-11-19 10:52-0300\n"
+"PO-Revision-Date: 2019-11-19 10:59-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -16,7 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.7.0\n"
+"Generated-By: Babel 2.4.0\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: app/forms.py:8 app/forms.py:14 app/forms.py:32
 msgid "Nome"
@@ -59,12 +61,60 @@ msgid "Apelido"
 msgstr "Nickname"
 
 #: app/forms.py:34
+msgid "Tipo de usuário"
+msgstr "User Type"
+
+#: app/forms.py:35
 msgid "Sobre mim"
 msgstr "About me"
 
-#: app/forms.py:35
+#: app/forms.py:36 app/forms.py:44 app/forms.py:55
 msgid "Enviar"
 msgstr "Submit"
+
+#: app/forms.py:39 app/forms.py:47
+msgid "Título"
+msgstr "Title"
+
+#: app/forms.py:40
+msgid "Esfera"
+msgstr "Sphere"
+
+#: app/forms.py:41
+msgid "Link Oficial"
+msgstr "Official Link"
+
+#: app/forms.py:42
+msgid "Link da Fonte de Dados"
+msgstr "Dataset Link"
+
+#: app/forms.py:43 app/forms.py:54
+msgid "Descrição"
+msgstr "Description"
+
+#: app/forms.py:48
+msgid "Licença"
+msgstr "License"
+
+#: app/forms.py:49
+msgid "Proprietário"
+msgstr "Owner"
+
+#: app/forms.py:50
+msgid "Desenvolvedor Ativo"
+msgstr "Active Development"
+
+#: app/forms.py:51
+msgid "Link para Download"
+msgstr "Download Link "
+
+#: app/forms.py:52
+msgid "Data de Criação"
+msgstr "Date Creation"
+
+#: app/forms.py:53
+msgid "Data de Lançamento"
+msgstr "Date Release "
 
 #: app/routes.py:31
 msgid "Início"
@@ -78,13 +128,21 @@ msgstr "Invalid username or password!"
 msgid "Parabéns, agora você é um usuário registrado!"
 msgstr "Congratulations, you are now a registered user!"
 
-#: app/routes.py:88
+#: app/routes.py:89
 msgid "Suas alterações foram salvas."
 msgstr "Your changes have been saved."
 
-#: app/routes.py:94
+#: app/routes.py:96
 msgid "Editar Perfil"
 msgstr "Edit profile"
+
+#: app/routes.py:102
+msgid "Cadastrar Fonte"
+msgstr "Register Source"
+
+#: app/routes.py:107
+msgid "Cadastrar Software"
+msgstr "Register Software"
 
 #: app/templates/base.html:3
 msgid "Bem vindo a Plataforma!"
@@ -92,4 +150,3 @@ msgstr "Welcome to Plataforma"
 
 #~ msgid "Inicial"
 #~ msgstr "Home"
-
