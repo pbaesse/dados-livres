@@ -16,7 +16,6 @@ def before_request():
 
 @app.route('/')
 @app.route('/index')  ## SELECT Todas as fontes de todos os usuários
-@login_required
 def index():
     
     return render_template('index.html', title=(_('Início')))

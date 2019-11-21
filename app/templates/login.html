@@ -1,26 +1,13 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-{% block content %}
-    <h1>Entre na Plataforma</h1>  
-    <form action="" method="post" novalidate>
-    	{{ form.csrf_token }}
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label}}<br>
-            {{ form.username(size=32, placeholder="seu_usuário") }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }} <br>
-            {{ form.password(size=32) }}<br>
-            {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <P> {{ form.remember_me() }} {{ form.remember_me.label }} </P>
-        <P> {{ form.submit() }} </P>      
-    </form>
+{% block app_content %}
+    <h1>Entre na Plataforma!</h1>
+    <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+    </br>
     <p>Novo usuário? <a href="{{ url_for('register') }}">Clique aqui para se registrar!</a></p>
 {% endblock %}
