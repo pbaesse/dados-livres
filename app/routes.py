@@ -15,20 +15,11 @@ def before_request():
     g.locale = str(get_locale())
 
 @app.route('/')
-@app.route('/index')  ## Todas as fontes de todos os usuários
+@app.route('/index')  ## SELECT Todas as fontes de todos os usuários
 @login_required
 def index():
-    posts = [
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-    return render_template('index.html', title=(_('Início')), posts=posts)
+    
+    return render_template('index.html', title=(_('Início')))
     
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -66,11 +57,11 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title=(_('Registrar')), form=form)
  
-@app.route('/user/<username>') ## Fontes do usuário
+@app.route('/user/<username>')
 @login_required
 def user(username):
 	user = User.query.filter_by(username=username).first_or_404()
-	posts = [
+	posts = [ ## SELECT Fontes apenas criadas pelo usuário
 		{'author': user, 'body': 'Test post #1'},
 		{'author': user, 'body': 'Test post #2'}
 	]
@@ -97,11 +88,29 @@ def edit_profile():
                            form=form)
 
 @app.route('/source', methods=['GET', 'POST'])
+@login_required
 def source():
 	form = SourceForm()
+	if form.validate_on_submit():
+		source = Source(title=form.title.data, sphere=form.sphere.data, description=form.description.data, 
+						officialLink=form.officialLink.data,datasetLink=form.datasetLink.data)
+		db.session.add(source)
+		db.session.commit()
+		flash(_('Parabéns, você acabou de registrar uma fonte de dados!'))
+		return redirect(url_for('index'))
 	return render_template('source.html', title=(_('Cadastrar Fonte')), form=form)
 	
 @app.route('/software', methods=['GET', 'POST'])
+@login_required
 def software():
 	form = SoftwareForm()
+	if form.validate_on_submit():
+		software = Software(title=form.title.data, description=form.description.data,
+						downloadLink=form.downloadLink.data, activeDevelopment=form.activeDevelopment.data,
+						license=form.license.data, owner=form.owner.data, dateCreation=form.dateCreation.data,
+						dateRelease=form.dateRelease.data)
+		db.session.add(software)
+		db.session.commit()
+		flash(_('Parabéns, você acabou de registrar um software de dados!'))
+		return redirect(url_for('index'))
 	return render_template('software.html', title=(_('Cadastrar Software')), form=form)
