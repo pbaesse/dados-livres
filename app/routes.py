@@ -14,13 +14,16 @@ def before_request():
         db.session.commit()
     g.locale = str(get_locale())
 
-@app.route('/')
-@app.route('/index')  ## SELECT Todas as fontes de todos os usuários
+@app.route('/index', methods=['GET', 'POST'])
+@login_required
 def index():
-    
-    return render_template('index.html', title=(_('Início')))
+	registered_sources = Source.query.filter_by(user_id=current_user.id).all()
+	registered_softwares = Software.query.filter_by(user_id=current_user.id).all()
+	db.session.commit()
+	return render_template('index.html', registered_sources=registered_sources, registered_softwares=registered_softwares, title=(_('Início')))
     
 @app.route('/login', methods=['GET', 'POST'])
+@app.route('/')
 def login():
 	if current_user.is_authenticated:
 		return redirect(url_for('index'))
@@ -38,9 +41,10 @@ def login():
 	return render_template('login.html', title=(_('Entrar')), form=form)
     
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
     
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -60,7 +64,7 @@ def register():
 @login_required
 def user(username):
 	user = User.query.filter_by(username=username).first_or_404()
-	posts = [ ## SELECT Fontes apenas criadas pelo usuário
+	posts = [
 		{'author': user, 'body': 'Test post #1'},
 		{'author': user, 'body': 'Test post #2'}
 	]
@@ -91,8 +95,8 @@ def edit_profile():
 def source():
 	form = SourceForm()
 	if form.validate_on_submit():
-		source = Source(title=form.title.data, sphere=form.sphere.data, description=form.description.data, 
-						officialLink=form.officialLink.data,datasetLink=form.datasetLink.data)
+		source = Source(title=form.title.data, sphere=form.sphere.data, description=form.description.data, \
+		officialLink=form.officialLink.data, datasetLink=form.datasetLink.data, user_id=current_user.id)
 		db.session.add(source)
 		db.session.commit()
 		flash(_('Parabéns, você acabou de registrar uma fonte de dados!'))
@@ -104,10 +108,10 @@ def source():
 def software():
 	form = SoftwareForm()
 	if form.validate_on_submit():
-		software = Software(title=form.title.data, description=form.description.data,
-						downloadLink=form.downloadLink.data, activeDevelopment=form.activeDevelopment.data,
+		software = Software(title=form.title.data,description=form.description.data, \
+		downloadLink=form.downloadLink.data,activeDevelopment=form.activeDevelopment.data,
 						license=form.license.data, owner=form.owner.data, dateCreation=form.dateCreation.data,
-						dateRelease=form.dateRelease.data)
+						dateRelease=form.dateRelease.data, user_id=current_user.id)
 		db.session.add(software)
 		db.session.commit()
 		flash(_('Parabéns, você acabou de registrar um software de dados!'))

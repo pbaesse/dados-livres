@@ -2,11 +2,38 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <h1>Oi, {{ current_user.username }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
-    
-    <p><a href="{{ url_for('source') }}">Cadastre uma nova fonte de dados abertos aqui!</a></p>
-    <p><a href="{{ url_for('software') }}">Cadastre um software de dados abertos aqui!</a></p>
+	<p><a href="{{ url_for('source') }}">Cadastre uma nova fonte de dados abertos aqui!</a></p>
+   	<p><a href="{{ url_for('software') }}">Cadastre um software de dados abertos aqui!</a></p>
+   	<h1>Fontes de Dados Abertos Governamentais: </h1>
+	<div class="row">
+        <div class="col-md-4">
+        	{% for registered_sources in registered_sources %}
+    		<h1>{{ registered_sources.title }}</h1>
+    		<ul>
+    			<li><p>Esfera: {{ registered_sources.sphere }}</p></li>
+    			<li><p>Descrição: {{ registered_sources.description }}</p></li>
+    			<li><p>Link Oficial (site da fonte): {{ registered_sources.officialLink }}</p></li>
+    			<li><p>Link da Fonte de Dados: {{ registered_sources.datasetLink }}</p></li>
+    		</ul>
+    		{% endfor %}
+    		</br>
+    	</div>
+	</div>
+	<h1>Softwares de Dados Abertos Governamentais: </h1>
+    <div class="row">
+        <div class="col-md-4">
+    		{% for registered_softwares in registered_softwares %}
+    		<h1>{{ registered_softwares.title }}</h1>
+    		<ul>
+    			<li><p>Descrição: {{ registered_softwares.description }}</p></li>
+    			<li><p>Link para Download: {{ registered_softwares.downloadLink }}</p></li>
+    			<li><p>Desenvolvedor Ativo: {{ registered_softwares.activeDevelopment }}</p></li>
+    			<li><p>Licensa: {{ registered_softwares.license }}</p></li>
+    			<li><p>Proprietario: {{ registered_softwares.owner }}</p></li>
+    			<li><p>Data de Criação: {{ registered_softwares.dateCreation }}</p></li>
+    			<li><p>Data de Lançamento: {{ registered_softwares.dateRelease }}</p></li>
+    		</ul>
+    		{% endfor %}
+		</div>
+	</div>
 {% endblock %}
