@@ -1,0 +1,20 @@
+{% if post.language and post.language != g.locale %}
+    <br><br>
+    <a href="#">{{ _('Translate') }}</a>
+{% endif %}
+<table>
+  <tr valign="top">
+    <td><img src="{{ post.avatar(36) }}"></td>
+    <td>
+      <h3><a href="{{ url_for('main.post', title=post.title) }}"> {{ post.title }}</a><br></h3>
+      {{ post.tag }}<br>
+      {{ post.categorie }}<br>
+      {{ post.sphere }}<br>
+      {{ post.description }}<br>
+      <a href="{{ post.officialLink }}" target="_blank">{{ post.officialLink }}</a><br>
+      {{ _('Cadastrado por') }}: <a href="{{ url_for('main.user', username=post.author.username ) }}">
+        {{ post.author.username }} </a>
+    </td>
+    <hr>
+  </tr>
+</table>

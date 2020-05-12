@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>{{ _('Ocorreu um erro inesperado') }}</h1>
+    <p>{{ _('O administrador foi notificado. Descupe pela incoveniência') }}</p>
+    <p><a href="{{ url_for('main.index') }}">{{_('Voltar') }}</a></p>
+{% endblock %}

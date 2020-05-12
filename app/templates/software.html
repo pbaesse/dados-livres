@@ -2,10 +2,58 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <h1>Cadastre seu software de dados!</h1>
-    <div class="row">
-        <div class="col-md-4">
-            {{ wtf.quick_form(form) }}
-        </div>
+
+<table class="table table-hover">
+    <tr valign="top">
+        <td width="256px"><img src="{{ software.avatar(256) }}"></td>
+        <td>
+              <h1>{{ _('Software') }}: {{ software.title }}</h1>
+              {% if software.tag %}<p>{{ _('Palavras-chave') }}: {{ software.tag }}</p>{% endif %}
+              {% if software.categorie %}<p>{{ _('Categoria') }}: {{ software.categorie }}</p>{% endif %}
+              {% if software.downloadLink %}<p>{{ _('Link de download') }}: {{ software.downloadLink }}</p>{% endif %}
+              {% if software.description %}<p>{{ _('Descrição') }}: {{ software.description }}</p>{% endif %}
+              {% if software.activeDevelopment %}<p>{{ _('Desenvolvedor ativo') }}: {{ software.activeDevelopment }}</p>{% endif %}
+              {% if software.license %}<p>{{ _('Licensa') }}: {{ software.license }}</p>{% endif %}
+              {% if software.owner %}<p>{{ _('Proprietário') }}: {{ software.owner }}</p>{% endif %}
+              {% if software.dateCreation %}<p>{{ _('Data de criação') }}: {{ software.dateCreation }}</p>{% endif %}
+              {{ _('Cadastrado por') }}: <a href="{{ url_for('main.user', username=software.author.username ) }}">
+                {{ software.author.username }} </a><br><br>
+              {% if not current_user.is_anonymous %}
+              <p><a href="{{ url_for('main.edit_software', id=software.id) }}">{{ _('Editar software') }}</a>
+              | <a href="{{ url_for('main.deletar_software', id=software.id) }}">{{ _('Excluir software') }}</a></p>
+              {% endif %}
+        </td>
+    </tr>
+</table>
+
+<br>
+<h2>Fontes Relacionadas com {{ software.title }}: </h2>
+<hr>
+<p>....</p>
+<br>
+<p>Relacione uma fonte parecida com o software {{ software.title }}: </p>
+<p><a href="{{ url_for('main.register_software') }}">{{ _('Relacionar fonte com um software existente') }}</a> |
+<a href="{{ url_for('main.register_software') }}">{{ _('Cadastrar uma nova fonte para relacionar com o software') }}</a></p>
+<br><br>
+
+<h2>Comentários:</h2>
+
+{% for comment in comments %}
+    {% include '_comment.html' %}<br>
+{% endfor %}
+<hr>
+
+<div class="row">
+    <div class="col-md-4">
+        {{ wtf.quick_form(form) }}
     </div>
+</div>
+
+{% if prev_url %}
+<a href="{{ prev_url }}">Mais recentes</a>
+{% endif %}
+{% if next_url %}
+<a href="{{ next_url }}">Mais antigas</a>
+{% endif %}
+
 {% endblock %}
