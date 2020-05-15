@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>{{ _('Cadastre sua fonte de dados!') }}</h1>
+    <div class="row">
+        <div class="col-md-4">
+          {% if form %}
+          <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+              {{ form.title.label }} <br>
+              {{ form.title(cols=32, rows=4) }}<br>
+              {% for error in form.title.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+            </p>
+            <p>
+              {{ form.tag.label }} <br>
+              {{ form.tag(cols=32, rows=4) }}<br>
+              {% for error in form.tag.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+            </p>
+            <p>
+              {{ form.categorie.label }} <br>
+              {{ form.categorie(cols=32, rows=4) }}<br>
+              {% for error in form.categorie.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+            </p>
+            <p>
+              {{ form.sphere.label }} <br>
+              {{ form.sphere(cols=32, rows=4) }}<br>
+              {% for error in form.sphere.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+            </p>
+            <p>
+              {{ form.officialLink.label }}<br>
+              {{ form.officialLink(cols=32, rows=4, placeholder="https://wwww.exemplo.com/") }}<br>
+              {% for error in form.officialLink.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+            </p>
+            <p>
+              {{ form.description.label }} <br>
+              {{ form.description(cols=32, rows=4) }}<br>
+              {% for error in form.description.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+          </form>
+          {% endif %}
+        </div>
+    </div>
+{% endblock %}

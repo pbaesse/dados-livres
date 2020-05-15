@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>{{ _('Página não encontrada') }}</h1>
+    <p><a href="{{ url_for('main.index') }}">{{ _('Voltar') }}</a></p>
+{% endblock %}

@@ -1,21 +1,42 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-{% block content %}
-    <h1>Usuário: {{ user.username }}</h1>
-    {% if user.nickname %}<p>Apelido: {{ user.nickname }}</p>{% endif %}
-    {% if user.typeUser %}<p>Tipo de usuário: {{ user.typeUser }}</p>{% endif %}
-	{% if user.about_me %}<p>Descrição: {{ user.about_me }}</p>{% endif %}
-    {% if user.last_seen %}<p>Visto pela última vez em: {{ user.last_seen }}</p>{% endif %}
-    
-    <hr>
-    {% for post in posts %}
-    <p>
-    {{ post.author.username }} diz: <b>{{ post.body }}</b>
-    </p>
-    {% endfor %}
-    
-    {% if user == current_user %}
-    <p><a href="{{ url_for('edit_profile') }}">Edite seu perfil de usuário aqui!</a></p>
-    {% endif %}
-    
+{% block app_content %}
+    <table class="table table-hover">
+        <tr>
+              <td width="256px"><img src="{{ user.avatar(256) }}"></td>
+              <td>
+                  <h1>{{ _('Usuário') }}: {{ user.username }}</h1>
+                  {% if user.nickname %}<p>{{ _('Apelido') }}: {{ user.nickname }}</p>{% endif %}
+  	              {% if user.about_me %}<p>{{ _('Descrição') }}: {{ user.about_me }}</p>{% endif %}
+                  {% if user.last_seen %}<p>{{ _('Visto pela última vez') }}: {{ moment(user.last_seen).format('LLL') }}</p>{% endif %}
+                  <p>{{ user.followers.count() }} {{ _('seguidores') }}, {{ user.followed.count() }} {{ _('seguindo') }}.</p>
+                  {% if user == current_user %}
+                    <p><a href="{{ url_for('main.edit_profile') }}">{{ _('Edite seu perfil') }}</a> |
+                     <a href="{{ url_for('main.deletar_user', id=user.id) }}">{{ _('Excluia seu perfil') }}</a></p>
+                  {% elif not current_user.is_following(user) %}
+                    <p><a href="{{ url_for('main.follow', username=user.username) }}">{{ _('Seguir') }}</a></p>
+                  {% else %}
+                    <p><a href="{{ url_for('main.unfollow', username=user.username) }}">{{ _('Deixar de seguir') }}</a></p>
+                  {% endif %}
+              </td>
+          </tr>
+      </table>
+
+      <h2>Fontes:</h2>
+      {% for post in posts %}
+        {% include '_post.html' %}
+      {% endfor %}<br>
+      <h2>Softwares:</h2>
+      {% for software in softwares %}
+        {% include '_software.html' %}
+      {% endfor %}
+
+      {% if prev_url %}
+  		<a href="{{ prev_url }}">Fontes mais recentes</a>
+			{% endif %}
+			{% if next_url %}
+			<a href="{{ next_url }}">Fontes mais antigas</a>
+			{% endif %}
+
 {% endblock %}
