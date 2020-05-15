@@ -3,9 +3,9 @@
 pages:
   stage: deploy
   script:
-    - mkdir .static
-    - cp -r * .static
-    - mv .static static
+    - mkdir .public
+    - cp -r * .public
+    - mv .public public
   artifacts:
     paths:
       - static
