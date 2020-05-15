@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+div#interface {
+	padding: 5px 10px 10px 30px;
+}
+
+p {
+	font-size: 18px;
+}
+
+p#descricao {
+	text-align: justify;
+}
+
+div#formulario {
+	width: 760px;
+	margin: 0  auto;
+	text-align: left;
+}
+
+h2#titulos {
+	text-align: center;
+	font-weight: bold;
+}
+
+h2#tituloembreve {
+	font-style: italic;
+}
+
+p#titulofonte {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+h2#tituloemail {
+	font-weight: bold;
+}
+
+button#categorias {
+	width: 300px;
+	height: 50px;
+}
+
+button#cadastrar {
+	width: 250px;
+}
+
+div.container4 {
+	text-align: center;
+}
+
+div#mc_embed_signup {
+	background:#fff;
+}
+
+div#fonte {
+	width: 760px;
+	margin: 0  auto;
+	text-align: left;
+}
+
+div#software {
+	width: 760px;
+	margin: 0  auto;
+	text-align: left;
+}
+
+div#semelhantes {
+	width: 760px;
+	margin: 0  auto;
+	text-align: left;
+}
+
+div#entrelinhas {
+	line-height: 1em;
+}
+
+textarea#exampleTextarea {
+	width: 300px;
+}
+
+input#mce-EMAIL {
+	width: 300px;
+}
+
+img {
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	border: 1px solid #999;
+}
+
+div#footer {
+	text-align: center;
+}
