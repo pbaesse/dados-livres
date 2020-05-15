@@ -1,8 +1,5 @@
 # Plataforma Livre de Dados Abertos Governamentais | Dados Livres
 
-## Link do GitLab: 
-[https://gitlab.com/pbaesse/dados-livres](https://gitlab.com/pbaesse/dados-livres)
-
 ## Descrição
 A Plataforma Livre de Dados Abertos Governamentais trata-se de um site que nasceu no IFRN — campus Ceará-Mirim no ano de 2018, quando dois alunos tiveram interesse em criar um projeto de pesquisa onde o foco seria ajudar pessoas com informação e, ao mesmo tempo, contribuir com o Software Livre. Então, foi aí que o orientador e mestre Baesse, apresentou os Dados Abertos Governamentais e uma ferramenta que pudesse ser construída unindo tudo isso.
 
