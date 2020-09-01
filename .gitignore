@@ -6,6 +6,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
 # C extensions
 *.so
@@ -19,6 +20,8 @@ downloads/
 eggs/
 .eggs/
 lib64/
+lib/
+lib/python3.6/site-packages
 parts/
 sdist/
 var/
@@ -221,3 +224,44 @@ dmypy.json
 .pyre/
 
 # End of https://www.gitignore.io/api/flask
+
+*.py[cod]
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+__pycache__
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+venv*
+app.db
+plataforma.log*

@@ -1,21 +1,11 @@
-{% if software.language and software.language != g.locale %}
-    <br><br>
-    <a href="#">{{ _('Translate') }}</a>
-{% endif %}
 <table>
   <tr valign="top">
-    <td><img src="{{ software.avatar(36) }}"></td>
     <td>
-      <h3><a href="{{ url_for('main.software', title=software.title) }}"> {{ software.title }}</a><br></h3>
-      {{ software.categorie }}<br>
-      {{ software.license }}<br>
-      {{ software.activeDevelopment }}<br>
-      {{ software.description }}<br>
-      <a href="{{ software.downloadLink }}" target="_blank">{{ software.downloadLink }}</a><br>
-      {{ software.owner }}<br>
-      {{ software.dateCreation }}<br>
-      {{ _('Cadastrado por') }}: <a href="{{ url_for('main.user', username=software.author.username ) }}">
-        {{ software.author.username }} </a>
+      <h4><a href="{{ url_for('main.software_profile', title=software.title) }}"
+        id="color-red">{{ software.title }}</a></h4><br>
+        <p>{{_('Categoria')}}: {{ software.category }} | {{_('Desenvolvedor')}}:
+        {{ software.owner }} <br>{{_('Licença')}}: {{ software.license }} </p>
+        <input type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput">
     </td>
   </tr>
 </table>

@@ -1,61 +1,87 @@
-{% extends 'bootstrap/base.html' %}
-
-{% block title %}
-    {% if title %}{{ title }} - {{ _('Dados Livres') }} {% else %}{{ _('Bem vindo a Dados Livres!') }}{% endif %}
+{% extends "bootstrap/base.html" %}
+{% block html_attribs %} lang="pt-br"{% endblock %}
+{% block title %}{% if title %}{{ title }} - {{ _('Dados Livres') }}
+{% else %}{{ _('Bem-vindo à Dados Livres') }}{% endif %}{% endblock %}
+<!-- meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+<!-- Style CSS -->
+{% block styles %}{{super()}}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/jquery-ui.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/mystyle.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-tagsinput-latest/src/bootstrap-tagsinput.css')}}">
+  <link rel="icon" href="{{url_for('static', filename='image/Simbolo-Dados-Livres.png')}}">
 {% endblock %}
-
 {% block navbar %}
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ url_for('main.index') }}">{{ _('DadosLivres.org: Pré-Alfa') }}</a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url_for('main.index') }}">{{ _('Página inicial') }}</a></li>
-                    <li><a href="{{ url_for('main.explore') }}">{{ _('Explorar') }}</a></li>
-                </ul>
-                {% if g.search_form %}
-                <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
-                    <div class="form-group">
-                    		{{ g.search_form.q(size=20, class='form-control',
-                        		placeholder=g.search_form.q.label.text) }}
-                    </div>
-          			</form>
-          			{% endif %}
-                <ul class="nav navbar-nav navbar-right">
-                    {% if current_user.is_anonymous %}
-                    <li><a href="{{ url_for('auth.login') }}">{{ _('Entrar') }}</a></li>
-                    <li><a href="{{ url_for('auth.register') }}">{{ _('Registre-se') }}</a></li>
-                    {% else %}
-                    <li><a href="{{ url_for('main.register_source') }}"> {{ _('Cadastrar fonte') }} </a></li>
-                    <li><a href="{{ url_for('main.register_software') }}"> {{ _('Cadastrar software') }} </a></li>
-                    <li><a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Perfil') }}</a></li>
-                    <li><a href="{{ url_for('auth.logout') }}">{{ _('Sair') }}</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
-{% endblock %}
-
-{% block content %}
-    <div class="container">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
-
-        {# application content needs to be provided in the app_content block #}
-        {% block app_content %}{% endblock %}
+  <nav class="navbar navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="{{'/'}}">
+          <img class="navbar-brand" src="../static/image/Logo-Dados-Livres.png" alt="Logo Dados Livres (dadoslivres.org)"></a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="{{ url_for('main.source') }}" id="navbar">{{ _('Fontes') }}</a></li>
+          <li><a href="{{ url_for('main.software') }}" id="navbar">{{ _('Aplicações') }}</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{ url_for('main.register_source') }}" id="navbar">{{ _('Nova Fonte') }}</a></li>
+          <li><a href="{{ url_for('main.register_software') }}" id="navbar">{{ _('Nova Aplicação') }}</a></li>
+          <li><a href="{{ url_for('main.about') }}" target="_blank" id="navbar">{{ _('Sobre') }}</a></li>
+          <li><a href="{{ url_for('main.how_to_contribute') }}" target="_blank" id="navbar">{{ _('Como Contribuir?') }}</a></li>
+          <li><a href="{{ url_for('main.contact') }}" target="_blank" id="navbar">{{ _('Contato') }}</a></li>
+          {% if current_user.is_anonymous %}
+            <li><a href="{{ url_for('auth.login') }}" id="navbar">{{ _('Entrar') }}</a></li>
+          {% else %}
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbar">{{ current_user }} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" style="color:#9d0208;" href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Acessar Perfil') }}</a></li>
+                <li><a class="dropdown-item" style="color:#9d0208;" href="{{ url_for('main.edit_profile') }}"> {{ _('Editar Perfil') }}</a></li>
+                <!-- <li><a href="{{ url_for('main.edit_password') }}"> {{ _('Editar Senha') }}</a></li>-->
+                <li><a class="dropdown-item" style="color:#9d0208;" href="{{ url_for('auth.logout') }}">{{ _('Sair') }}</a></li>
+              </ul>
+            </li>
+          {% endif %}
+          <li><a href="#" target="_blank" id="navbar"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="0.97em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248s248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7l-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1l114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4l-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z" fill="#9d0208"/></svg></a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
+{% endblock %}
+{% block content %}
+  <div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <br><div class="alert alert-info text-center" role="alert">{{ message }}</div><br>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      {# application content needs to be provided in the app_content block #}
+      {% block app_content %}{% endblock %}
+  </div>
+  <br><br>
+  <footer id="footer"><br>
+      <p class="text-muted copyright text-center">
+      &copy;{{_('Dados Livres 2019. Todos os direitos reservados.
+      Licenciado com licença GNU General Public License v3.0.')}}</p> <hr>
+      <p class="text-center">{{_('Desenvolvido carinhosamente no Rio Grande do Norte - Brasil')}} <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><path d="M10 17.12c3.33-1.4 5.74-3.79 7.04-6.21c1.28-2.41 1.46-4.81.32-6.25c-1.03-1.29-2.37-1.78-3.73-1.74s-2.68.63-3.63 1.46c-.95-.83-2.27-1.42-3.63-1.46s-2.7.45-3.73 1.74c-1.14 1.44-.96 3.84.34 6.25c1.28 2.42 3.69 4.81 7.02 6.21z" fill="#9d0208"/></svg><br>
+      <a href="#" target="_blank" id="color-red">{{_('Nosso grupo no Telegram')}} <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="0.97em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248s248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7l-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1l114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4l-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z" fill="#9d0208"</svg></a>
+      <br> <a href="#" class="scroll-behavior" id="color-red">{{_('Voltar para o topo ↑')}}</a></p>
+  </footer>
+{% endblock %}
+{% block scripts %}{{super()}}
+<!-- JavaScript, JQuery-ui -->
+  <script src="{{url_for('static', filename='js/jquery-ui.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='js/myscripts.js') }}"></script>
+<!-- bootstrap-tagsinput -->
+  <script src="{{url_for('static', filename='bootstrap-tagsinput-latest/src/bootstrap-tagsinput-angular.js')}}"></script>
+  <script src="{{url_for('static', filename='bootstrap-tagsinput-latest/src/bootstrap-tagsinput.js')}}"></script>
 {% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-03-30 19:59-0300\n"
+"POT-Creation-Date: 2020-08-31 21:05-0300\n"
 "PO-Revision-Date: 2019-11-19 10:59-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,459 +19,736 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
 
-#: app/__init__.py:21
-msgid "Para acessar essa página entre como usuário"
-msgstr "Please log in to access this page."
+#: app/__init__.py:30
+msgid "Entre em Dados Livres para acessar está página"
+msgstr "Enter Free Data to access this page"
 
 #: app/auth/email.py:7
-msgid "[Dados Livres] Redefina sua senha"
-msgstr "[Free Data] Reset your password"
+msgid "[Dados Livres] Renomeie sua senha"
+msgstr "[Dados Livres] Rename your password"
 
-#: app/auth/forms.py:9 app/auth/forms.py:16 app/main/form.py:22
-#: app/main/form.py:64
-msgid "Nome"
-msgstr "Name"
+#: app/auth/forms.py:10 app/auth/forms.py:22 app/auth/forms.py:44
+#: app/main/form.py:145
+msgid "E-mail: *"
+msgstr "Email: *"
 
-#: app/auth/forms.py:10 app/auth/forms.py:18 app/auth/forms.py:40
-msgid "Senha"
-msgstr "Password"
+#: app/auth/forms.py:12 app/auth/forms.py:24 app/auth/forms.py:50
+#: app/main/form.py:35
+msgid "Senha: *"
+msgstr "password: *"
 
-#: app/auth/forms.py:11
-msgid "Lembre de mim"
-msgstr "remember me"
+#: app/auth/forms.py:15
+msgid "Lembrar de mim"
+msgstr "Do you remember me"
 
-#: app/auth/forms.py:12 app/auth/routes.py:28 app/templates/base.html:34
+#: app/auth/forms.py:16 app/auth/routes.py:29 app/templates/base.html:40
 msgid "Entrar"
 msgstr "Login"
 
-#: app/auth/forms.py:17 app/auth/forms.py:35 app/main/form.py:65
-msgid "E-mail"
-msgstr "Email"
+#: app/auth/forms.py:20 app/main/form.py:15 app/main/form.py:129
+#: app/main/form.py:135 app/main/form.py:143
+msgid "Nome: *"
+msgstr "Name: *"
 
-#: app/auth/forms.py:19
-msgid "Repita a senha"
-msgstr "Repeat Password"
+#: app/auth/forms.py:27 app/auth/forms.py:53 app/main/form.py:38
+msgid "Repetir senha: *"
+msgstr "Repeat password: *"
 
-#: app/auth/forms.py:21 app/auth/routes.py:47
-msgid "Registrar"
+#: app/auth/forms.py:30
+msgid "Inscrever"
 msgstr "Register"
 
-#: app/auth/forms.py:26
-msgid "Por favor, use um nome de usuário diferente."
-msgstr "Please use a different username."
+#: app/auth/forms.py:35
+msgid "Esse usuário já está cadastrado. Escolha um nome diferente"
+msgstr "This user is already registered. Choose a different name"
 
-#: app/auth/forms.py:31
-msgid "Por favor, use um endereço de e-mail diferente."
-msgstr "Please use a different email address."
+#: app/auth/forms.py:40
+msgid "Esse endereço já está cadastrado. Escolha um e-mail diferente"
+msgstr "This email is already registered. Choose a different email"
 
-#: app/auth/forms.py:36 app/auth/forms.py:44
-msgid "Solicitar redefinição de senha"
-msgstr "Request password reset"
+#: app/auth/forms.py:46 app/main/form.py:131 app/main/form.py:139
+#: app/main/form.py:149
+msgid "Enviar"
+msgstr "Submit"
 
-#: app/auth/forms.py:42
-msgid "Repita sua senha"
-msgstr "Repeat your password"
+#: app/auth/forms.py:56 app/main/form.py:21 app/main/form.py:41
+msgid "Salvar"
+msgstr "To save"
 
-#: app/auth/routes.py:21
-msgid "Nome de usuário ou senha inválidos"
-msgstr "Invalid username or password!"
+#: app/auth/routes.py:22
+msgid "Nome de usuário ou senha inválido"
+msgstr "Invalid username or password"
 
-#: app/auth/routes.py:45
-msgid "Parabéns, agora você é um usuário registrado!"
-msgstr "Congratulations, you are now a registered user!"
+#: app/auth/routes.py:41
+msgid "Parabéns, agora você é um usuário registrado"
+msgstr "Congratulations, you are now a registered user"
+
+#: app/auth/routes.py:43 app/templates/auth/login.html:16
+msgid "Inscreva-se"
+msgstr "Sign up"
 
 #: app/auth/routes.py:59
-msgid "Verifique seu e-mail para obter instruções para redefinir sua senha"
-msgstr "Check your email for the instructions to reset your password"
+msgid "Por favor, verifique seu e-mail para concluir a sua renomeação de senha"
+msgstr "Please check your email to complete your password rename"
 
-#: app/auth/routes.py:62
-msgid "Redefina sua senha"
-msgstr "Reset Password"
+#: app/auth/routes.py:62 app/auth/routes.py:77
+msgid "Renomear Senha"
+msgstr "Rename your password"
 
 #: app/auth/routes.py:75
 msgid "Sua senha foi alterada"
 msgstr "Your password has been reset."
 
-#: app/main/form.py:11
-msgid "Buscar"
-msgstr ""
+#: app/category/routes.py:26 app/category/routes.py:35
+#: app/templates/index.html:14 app/templates/software.html:7
+#: app/templates/source.html:7
+msgid "Corona Vírus"
+msgstr "Covid-19"
 
-#: app/main/form.py:23 app/templates/user.html:10
-msgid "Apelido"
+#: app/category/routes.py:44 app/category/routes.py:53
+#: app/templates/index.html:15 app/templates/software.html:8
+#: app/templates/source.html:8
+msgid "Saúde"
+msgstr "Health"
+
+#: app/category/routes.py:62 app/category/routes.py:71
+#: app/templates/index.html:16 app/templates/software.html:9
+#: app/templates/source.html:9
+msgid "Educação"
+msgstr "Education"
+
+#: app/category/routes.py:80 app/category/routes.py:89
+#: app/templates/index.html:21 app/templates/software.html:14
+#: app/templates/source.html:14
+msgid "Cinema"
+msgstr "Movie theater"
+
+#: app/category/routes.py:98 app/category/routes.py:107
+#: app/templates/index.html:22 app/templates/software.html:15
+#: app/templates/source.html:15
+msgid "Música"
+msgstr "Music"
+
+#: app/category/routes.py:116 app/category/routes.py:125
+#: app/templates/index.html:23 app/templates/software.html:16
+#: app/templates/source.html:16
+msgid "Tecnologia"
+msgstr "Technology"
+
+#: app/category/routes.py:134 app/category/routes.py:143
+#: app/templates/index.html:28 app/templates/software.html:21
+#: app/templates/source.html:21
+msgid "Ciência"
+msgstr "Science"
+
+#: app/category/routes.py:153 app/category/routes.py:162
+#: app/templates/index.html:29 app/templates/software.html:22
+#: app/templates/source.html:22
+msgid "Segurança Pública"
+msgstr "Public security"
+
+#: app/category/routes.py:171 app/category/routes.py:180
+#: app/templates/index.html:30 app/templates/software.html:23
+#: app/templates/source.html:23
+msgid "Meio Ambiente"
+msgstr "Environment"
+
+#: app/category/routes.py:189 app/category/routes.py:198
+#: app/templates/index.html:17 app/templates/software.html:10
+#: app/templates/source.html:10
+msgid "Cultura"
+msgstr "Culture"
+
+#: app/category/routes.py:207 app/category/routes.py:216
+#: app/templates/index.html:24 app/templates/software.html:17
+#: app/templates/source.html:17
+msgid "Países"
+msgstr "Countries"
+
+#: app/category/routes.py:225 app/category/routes.py:234
+#: app/templates/index.html:31 app/templates/software.html:24
+#: app/templates/source.html:24
+msgid "IBGE"
+msgstr "IBGE"
+
+#: app/category/routes.py:243 app/category/routes.py:252
+#: app/templates/index.html:18 app/templates/software.html:11
+#: app/templates/source.html:11
+msgid "Gastos Públicos"
+msgstr "Public Spending"
+
+#: app/category/routes.py:261 app/category/routes.py:270
+#: app/templates/index.html:32 app/templates/software.html:25
+#: app/templates/source.html:25
+msgid "Clima"
+msgstr "Climate"
+
+#: app/category/routes.py:279 app/category/routes.py:288
+#: app/templates/index.html:25 app/templates/software.html:18
+#: app/templates/source.html:18
+msgid "Lazer"
+msgstr "Recreation"
+
+#: app/main/form.py:17
+msgid "Apelido:"
 msgstr "Nickname"
 
-#: app/main/form.py:24
-msgid "Sobre mim"
-msgstr "About me"
+#: app/main/form.py:19
+msgid "Sobre mim:"
+msgstr "Sobre mim:"
 
-#: app/main/form.py:25 app/main/form.py:47 app/main/form.py:60
+#: app/main/form.py:31
+msgid "Escolha um nome diferente"
+msgstr "Choose a different name"
+
+#: app/main/form.py:45 app/main/form.py:80 app/main/form.py:123
+msgid "Título: *"
+msgstr "Title: *"
+
+#: app/main/form.py:47 app/main/form.py:82
+msgid "Palavras-Chaves: *"
+msgstr "Keywords: *"
+
+#: app/main/form.py:49 app/main/form.py:84
+msgid "Categoria: *"
+msgstr "Category"
+
+#: app/main/form.py:56 app/main/form.py:91
+msgid "Página Oficial: *"
+msgstr "Official page: *"
+
+#: app/main/form.py:60
+msgid "Esfera: *"
+msgstr "Sphere: *"
+
+#: app/main/form.py:63
+msgid "Município:"
+msgstr "County:"
+
+#: app/main/form.py:65
+msgid "Estado:"
+msgstr "State:"
+
 #: app/main/form.py:67
-msgid "Enviar"
-msgstr "Submit"
+msgid "País:"
+msgstr "Country"
 
-#: app/main/form.py:35
-msgid "Por favor digite um nome diferente."
-msgstr "please enter a different name"
+#: app/main/form.py:69 app/main/form.py:112 app/main/form.py:136
+msgid "Descrição: *"
+msgstr "Description: *"
 
-#: app/main/form.py:39
-msgid "Título:"
-msgstr ""
+#: app/main/form.py:71 app/main/form.py:114 app/main/form.py:125
+msgid "Registrar"
+msgstr "Register"
 
-#: app/main/form.py:40 app/main/form.py:52
-msgid "Palavra-Chave:"
-msgstr ""
+#: app/main/form.py:76
+msgid "Essa fonte já está cadastrada. Escolha um título diferente"
+msgstr "This source is already registered. Choose a different title"
 
-#: app/main/form.py:44 app/main/form.py:53 app/templates/post.html:12
-#: app/templates/software.html:12
-msgid "Categoria"
-msgstr ""
+#: app/main/form.py:96
+msgid "Desenvolvedor: *"
+msgstr "Developer: *"
 
-#: app/main/form.py:45
-msgid "Descrição:"
-msgstr ""
-
-#: app/main/form.py:46
-msgid "Link Oficial:"
-msgstr "Link Oficial:"
-
-#: app/main/form.py:51
-msgid "Título"
-msgstr "Title"
-
-#: app/main/form.py:54
-msgid "Licença:"
-msgstr ""
-
-#: app/main/form.py:55
-msgid "Proprietário:"
-msgstr ""
-
-#: app/main/form.py:56
-msgid "Desenvolvedor Ativo:"
-msgstr ""
-
-#: app/main/form.py:57
-msgid "Link para Download:"
-msgstr ""
-
-#: app/main/form.py:58
+#: app/main/form.py:98
 msgid "Data de Criação:"
-msgstr ""
+msgstr "Creation date:"
 
-#: app/main/form.py:59 app/templates/post.html:14
-#: app/templates/software.html:14 app/templates/user.html:11
-msgid "Descrição"
-msgstr "Description"
+#: app/main/form.py:100
+msgid "Licença: *"
+msgstr "License: *"
 
-#: app/main/form.py:66
-msgid "Comentário"
-msgstr ""
+#: app/main/form.py:119
+msgid "Essa aplicação já está cadastrada. Escolha um título diferente"
+msgstr "This application is already registered. Choose a different title"
 
-#: app/main/routes.py:25
-msgid "Search"
-msgstr ""
+#: app/main/form.py:130
+msgid "Comentário: *"
+msgstr "Comment: *"
 
-#: app/main/routes.py:51 app/main/routes.py:75
-msgid "Your post is now live!"
-msgstr ""
+#: app/main/form.py:138
+msgid "Tipo: *"
+msgstr "Type: *"
 
-#: app/main/routes.py:86
+#: app/main/form.py:147
+msgid "Mensagem: *"
+msgstr "Message: *"
+
+#: app/main/routes.py:63
 msgid "Página Principal"
 msgstr "Home Page"
 
-#: app/main/routes.py:156 app/main/routes.py:211 app/main/routes.py:249
-msgid "Suas alterações foram salvas."
-msgstr "Your changes have been saved."
+#: app/main/routes.py:69 app/templates/base.html:30
+msgid "Fontes"
+msgstr "Sources"
 
-#: app/main/routes.py:158 app/templates/edit_post.html:5
-msgid "Editar Fontes"
-msgstr ""
+#: app/main/routes.py:73 app/templates/base.html:31
+msgid "Aplicações"
+msgstr "Applications"
 
-#: app/main/routes.py:212 app/templates/edit_software.html:5
-msgid "Editar Software"
-msgstr ""
+#: app/main/routes.py:93
+msgid "Você registrou uma nova Fonte de Dados Abertos"
+msgstr "You have registered a new Open Data Source"
 
-#: app/main/routes.py:255 app/templates/edit_profile.html:5
-msgid "Editar Perfil"
-msgstr "Edit profile"
-
-#: app/main/routes.py:264
-msgid "usuário {} Página não encontrada."
-msgstr "User {} Not Found"
-
-#: app/main/routes.py:267
-msgid "Você não pode seguir a si mesmo!"
-msgstr "You cannot follow yourself"
-
-#: app/main/routes.py:271
-msgid "Você está seguindo {}!"
-msgstr "You are following"
-
-#: app/main/routes.py:280
-msgid "Usuário {} Página não encontrada."
-msgstr "User {} Not Found"
-
-#: app/main/routes.py:283
-msgid "Você não pode deixar de seguir a si mesmo!"
-msgstr "You cannot unfollow yourself"
-
-#: app/main/routes.py:287
-msgid "Você não está seguindo {}."
-msgstr "You are not following"
-
-#: app/main/routes.py:301
-msgid "Parabéns, você acabou de registrar uma foonte de dados!"
-msgstr "Congratulations, you registered a data source"
-
-#: app/main/routes.py:303
+#: app/main/routes.py:94
 msgid "Cadastrar Fonte"
 msgstr "Register Source"
 
-#: app/main/routes.py:318
-msgid "Parabéns, você acabou de registrar um software de dados!"
-msgstr "Congratulations, you registered a data software"
+#: app/main/routes.py:100
+msgid "Perfil da Fonte"
+msgstr "Source Profile"
 
-#: app/main/routes.py:320
-msgid "Cadastrar Software"
-msgstr "Register Software"
+#: app/main/routes.py:120
+msgid "As alterações foram salvas"
+msgstr "Changes have been saved"
 
-#: app/templates/_post.html:3 app/templates/_software.html:3
-msgid "Translate"
-msgstr ""
+#: app/main/routes.py:131 app/templates/edit_source.html:4
+#: app/templates/source_profile.html:16
+msgid "Editar Fonte"
+msgstr "Edit Source"
 
-#: app/templates/_post.html:15 app/templates/_software.html:17
-#: app/templates/post.html:16 app/templates/software.html:19
-msgid "Cadastrado por"
-msgstr ""
+#: app/main/routes.py:147 app/main/routes.py:220
+msgid "A fonte foi deletada"
+msgstr "The source has been deleted"
 
-#: app/templates/base.html:4 app/templates/index.html:5
+#: app/main/routes.py:168
+msgid "Você registrou uma nova Aplicação"
+msgstr "You have registered a new Application"
+
+#: app/main/routes.py:170
+msgid "Cadastrar Aplicação"
+msgstr "Register Application"
+
+#: app/main/routes.py:175
+msgid "Perfil da Aplicação"
+msgstr "Application Profile"
+
+#: app/main/routes.py:194 app/main/routes.py:246
+msgid "Suas alterações foram salvas"
+msgstr "Your changes have been saved"
+
+#: app/main/routes.py:204 app/templates/edit_software.html:4
+#: app/templates/software_profile.html:14
+msgid "Editar Aplicação"
+msgstr "Edit Application"
+
+#: app/main/routes.py:234
+msgid "Perfil do Usuário"
+msgstr "User Profile"
+
+#: app/main/routes.py:252 app/templates/base.html:46 app/templates/user.html:14
+msgid "Editar Perfil"
+msgstr "Edit profile"
+
+#: app/main/routes.py:261
+msgid "O Usuário foi excluído"
+msgstr "User has been deleted"
+
+#: app/main/routes.py:271
+msgid "Sua nova senha foi salva"
+msgstr "Your new password has been saved"
+
+#: app/main/routes.py:275 app/templates/base.html:47
+msgid "Editar Senha"
+msgstr "Edit Password"
+
+#: app/main/routes.py:279 app/templates/about.html:6 app/templates/base.html:36
+msgid "Sobre"
+msgstr "Sbout"
+
+#: app/main/routes.py:283
+msgid "Como contribuir"
+msgstr "How to contribute"
+
+#: app/main/routes.py:296
+msgid "Seu e-mail foi enviado, agradecemos pelo contato"
+msgstr "Your email has been sent, thanks for contacting"
+
+#: app/main/routes.py:297 app/main/routes.py:300 app/templates/base.html:38
+#: app/templates/contact.html:4
+msgid "Contato"
+msgstr "Contact"
+
+#: app/templates/_software.html:6 app/templates/_source.html:6
+#: app/templates/software_profile.html:7 app/templates/source_profile.html:7
+msgid "Categoria"
+msgstr "Category"
+
+#: app/templates/_software.html:6 app/templates/software_profile.html:8
+msgid "Desenvolvedor"
+msgstr "Developer"
+
+#: app/templates/_software.html:7 app/templates/software_profile.html:9
+msgid "Licença"
+msgstr "Licença"
+
+#: app/templates/_source.html:6 app/templates/source_profile.html:9
+msgid "Esfera"
+msgstr "Sphere"
+
+#: app/templates/base.html:3 app/templates/email/reset_password.html:11
+#: app/templates/index.html:5
 msgid "Dados Livres"
 msgstr "Free Data"
 
-#: app/templates/base.html:4
-msgid "Bem vindo a Dados Livres!"
+#: app/templates/auth/login.html:4 app/templates/base.html:4
+msgid "Bem-vindo à Dados Livres"
 msgstr "Welcome to Free Data"
 
-#: app/templates/base.html:17
-msgid "DadosLivres.org: Pré-Alfa"
-msgstr "DadosLivres.org: Pré-Alfa"
+#: app/templates/base.html:34
+msgid "Nova Fonte"
+msgstr "New Source"
 
-#: app/templates/base.html:21
-msgid "Página inicial"
-msgstr "Home page"
-
-#: app/templates/base.html:22
-msgid "Explorar"
-msgstr ""
-
-#: app/templates/auth/register.html:5 app/templates/base.html:35
-msgid "Registre-se"
-msgstr "Register"
+#: app/templates/base.html:35
+msgid "Nova Aplicação"
+msgstr "New Application"
 
 #: app/templates/base.html:37
-msgid "Cadastrar fonte"
-msgstr ""
+msgid "Como Contribuir?"
+msgstr "How to contribute?"
 
-#: app/templates/base.html:38
-msgid "Cadastrar software"
-msgstr ""
+#: app/templates/base.html:45
+msgid "Acessar Perfil"
+msgstr "Access Profile"
 
-#: app/templates/base.html:39
-msgid "Perfil"
-msgstr ""
-
-#: app/templates/base.html:40
+#: app/templates/base.html:48
 msgid "Sair"
 msgstr "Logout"
 
-#: app/templates/explore.html:5
-msgid "Encontre por mais fontes e softwares!"
+#: app/templates/base.html:73
+msgid ""
+"Dados Livres 2019. Todos os direitos reservados.\n"
+"    Licenciado com licença GNU General Public License v3.0."
 msgstr ""
+"Free Data 2019. All rights reserved. \n"
+" Licensed with GNU General Public License v3.0."
+
+#: app/templates/base.html:75
+msgid "Desenvolvido carinhosamente no Rio Grande do Norte - Brasil"
+msgstr "Lovingly developed in Rio Grande do Norte - Brazil"
+
+#: app/templates/base.html:76
+msgid "Nosso grupo no Telegram"
+msgstr "Our group on Telegram"
+
+#: app/templates/base.html:77
+msgid "Voltar para o topo ↑"
+msgstr "Back to top"
+
+#: app/templates/contact.html:5
+msgid ""
+"Se preferir, mande um e-mail diretamente para o\n"
+"  endereço: dadoslivres@contato.com"
+msgstr ""
+"If you prefer, send an email directly to \\ n address: "
+"dadoslivres@contato.com"
+
+#: app/templates/edit_password.html:4
+msgid "Editar sua senha"
+msgstr "Edit your password"
+
+#: app/templates/edit_profile.html:4
+msgid "Editar seu perfil de usuário"
+msgstr "Edit your user profile"
+
+#: app/templates/how_to_contribute.html:5
+msgid "Como contribuir?"
+msgstr "How to contribute?"
 
 #: app/templates/index.html:6
 msgid ""
-"Plataforma Livre de Dados Abertos Governamentais que permite o "
-"compartilhamento\n"
-"\t\t\t\t\te a colobaração na identificação de fontes de dados abertos e "
-"aplicações\n"
-"\t\t\t\t\tque fazem uso desse tipo de informação."
+"Plataforma Dados Livres\n"
+"\t\t\tque permite o compartilhamento e a colaboração na identificação de "
+"Fontes\n"
+"\t\t\tde Dados Abertos e Aplicações que fazem uso desse tipo de "
+"informação,\n"
+"\t\t\tde modo a gerar controle social e transparência pública para a "
+"sociedade civil."
 msgstr ""
 
-#: app/templates/index.html:9
-msgid "(Colabore no GitHub)"
-msgstr "(Collaborate on GitHub)"
+#: app/templates/index.html:12 app/templates/source.html:5
+msgid "Encontre as principais categorias de Fontes Abertas"
+msgstr "Find the main categories of Open Sources"
 
-#: app/templates/post.html:10
-msgid "Fonte"
-msgstr ""
+#: app/templates/index.html:36
+msgid "Fonte registrada recentemente"
+msgstr "Recently registered source"
 
-#: app/templates/post.html:11 app/templates/software.html:11
-msgid "Palavras-chave"
-msgstr ""
+#: app/templates/index.html:46
+msgid "Aplicação registrada recentemente"
+msgstr "Recently registered application"
 
-#: app/templates/post.html:13
-msgid "Esfera"
-msgstr ""
+#: app/templates/register_software.html:4
+msgid "Registrar nova Aplicação"
+msgstr "Register new application"
 
-#: app/templates/post.html:15
-msgid "Link Oficial"
-msgstr ""
+#: app/templates/register_source.html:4
+msgid "Registrar nova Fonte"
+msgstr "Register new Source"
 
-#: app/templates/post.html:19
-msgid "Editar fonte"
-msgstr ""
+#: app/templates/software.html:5
+msgid "Encontre as principais categorias de Aplicações Abertas"
+msgstr "Find the main categories of Open Applications"
 
-#: app/templates/post.html:20 app/templates/software.html:23
-msgid "Deletar fonte"
-msgstr ""
-
-#: app/templates/register_software.html:5
-msgid "Cadastre seu software de dados!"
-msgstr "Register a data software"
-
-#: app/templates/register_source.html:5
-msgid "Cadastre sua fonte de dados!"
-msgstr ""
-
-#: app/templates/search.html:4
-msgid "Procurar Resultados"
-msgstr ""
-
-#: app/templates/search.html:12
-msgid "Resultados anteriores"
-msgstr ""
-
-#: app/templates/search.html:17
-msgid "Próximos resultados"
-msgstr ""
-
-#: app/templates/software.html:10
-msgid "Software"
-msgstr ""
-
-#: app/templates/software.html:13
-msgid "Link de download"
-msgstr ""
-
-#: app/templates/software.html:15
-msgid "Desenvolvedor ativo"
-msgstr ""
-
-#: app/templates/software.html:16
-msgid "Licensa"
-msgstr ""
-
-#: app/templates/software.html:17
-msgid "Proprietário"
-msgstr "Owner"
-
-#: app/templates/software.html:18
+#: app/templates/software_profile.html:10
 msgid "Data de criação"
-msgstr ""
+msgstr "Data de criação"
 
-#: app/templates/software.html:22
-msgid "Edite sua fonte aqui!"
-msgstr ""
+#: app/templates/software_profile.html:15
+msgid "Excluir Aplicação"
+msgstr "Delete Application"
 
-#: app/templates/user.html:9
-msgid "Usuário"
-msgstr "User"
+#: app/templates/software_profile.html:17 app/templates/source_profile.html:19
+msgid "Visitar Página Oficial"
+msgstr "Visit Official Page"
 
-#: app/templates/user.html:12
-msgid "Visto pela última vez"
-msgstr "Last seen"
+#: app/templates/software_profile.html:18 app/templates/source_profile.html:20
+msgid "Aplicação registrada por"
+msgstr "Application registered by"
 
-#: app/templates/user.html:13
-msgid "seguidores"
-msgstr "followers"
+#: app/templates/source_profile.html:10
+msgid "Município"
+msgstr "County"
 
-#: app/templates/user.html:13
-msgid "seguindo"
-msgstr "following"
+#: app/templates/source_profile.html:11
+msgid "Estado"
+msgstr "State"
 
-#: app/templates/user.html:15
-msgid "Edite seu perfil aqui!"
-msgstr ""
+#: app/templates/source_profile.html:12
+msgid "País"
+msgstr "County"
 
-#: app/templates/user.html:17
-msgid "Seguir"
-msgstr "Follow"
+#: app/templates/source_profile.html:17
+msgid "Excluir Fonte"
+msgstr "Delete Source"
 
-#: app/templates/user.html:19
-msgid "Deixar de seguir"
-msgstr "Unfollow"
+#: app/templates/user.html:20
+msgid "Fontes registradas por"
+msgstr "Sources registered by"
+
+#: app/templates/user.html:24
+msgid "Aplicações registradas por"
+msgstr "Applications registered by"
 
 #: app/templates/auth/login.html:5
-msgid "Entre na Plataforma: Dados Livres"
-msgstr "Enter the platform: Free Data"
+msgid ""
+"Entre para Dados Livres e ajude a colaborar com\n"
+"    diversas fontes e aplicações em dados abertos."
+msgstr ""
+"Join Free Data and help collaborate with \n"
+" various sources and applications in open data."
 
-#: app/templates/auth/login.html:12
-msgid "Novo usuário?"
-msgstr "New user?"
-
-#: app/templates/auth/login.html:12
-msgid "Clique aqui para se registrar!"
-msgstr "Click here to register"
-
-#: app/templates/auth/login.html:13
+#: app/templates/auth/login.html:14
 msgid "Esqueceu sua senha?"
 msgstr "Forgot your password"
 
-#: app/templates/auth/login.html:14
-msgid "Clique aqui para renomeiar sua senha!"
-msgstr "Click here to rename your password!"
-
-#: app/templates/auth/reset_password.html:5
-msgid "Crie sua nova senha"
-msgstr "Create your new password"
-
-#: app/templates/auth/reset_password_request.html:5
+#: app/templates/auth/login.html:15
 msgid "Renomeie sua senha"
 msgstr "Rename your password"
 
-#: app/templates/errors/404.html:4
+#: app/templates/auth/login.html:16
+msgid "Novo usuário?"
+msgstr "New user?"
+
+#: app/templates/auth/register.html:4
+msgid "Inscreva-se em Dados Livres"
+msgstr "Subscribe to Free Data"
+
+#: app/templates/auth/register.html:5
+msgid ""
+"Inscreva-se em Dados Livres e ajude a colaborar com\n"
+"      diversas fontes e aplicações em dados abertos."
+msgstr ""
+"Sign up for Free Data and help collaborate with \n"
+" various sources and applications in open data."
+
+#: app/templates/auth/register.html:14
+msgid "Já tem uma conta?"
+msgstr "Já tem uma conta?"
+
+#: app/templates/auth/register.html:14
+msgid "Entre"
+msgstr "In between"
+
+#: app/templates/auth/reset_password.html:4
+msgid "Renomear senha"
+msgstr "Rename Password"
+
+#: app/templates/auth/reset_password_request.html:4
+msgid "Solicitar renovação de senha"
+msgstr "Request password renewal"
+
+#: app/templates/category/Climate_Software.html:4
+msgid "Clima - Aplicações"
+msgstr "Climate - Applications"
+
+#: app/templates/category/Climate_Source.html:4
+msgid "Clima - Fontes"
+msgstr "Climate - Sources"
+
+#: app/templates/category/Countries_Software.html:4
+msgid "Países - Aplicações"
+msgstr "Countries - Applications"
+
+#: app/templates/category/Countries_Source.html:4
+msgid "Países - Fontes"
+msgstr "Countries - Sources"
+
+#: app/templates/category/Covid19_Software.html:4
+msgid "Corona Vírus - Aplicações"
+msgstr "Covid-19 - Applications"
+
+#: app/templates/category/Covid19_Source.html:4
+msgid "Corona Vírus - Fontes"
+msgstr "Covid-19- Sources"
+
+#: app/templates/category/Culture_Software.html:4
+msgid "Cultura - Aplicações"
+msgstr "Culture - Applications"
+
+#: app/templates/category/Culture_Source.html:4
+msgid "Cultura - Fontes"
+msgstr "Culture - Sources"
+
+#: app/templates/category/Education_Software.html:4
+msgid "Educação - Aplicações"
+msgstr "Education - Applications"
+
+#: app/templates/category/Education_Source.html:4
+msgid "Educação - Fontes"
+msgstr "Education - Sources"
+
+#: app/templates/category/Environment_Software.html:4
+msgid "Meio Ambiente - Aplicações"
+msgstr "Environment - Applications"
+
+#: app/templates/category/Environment_Source.html:4
+msgid "Meio Ambiente - Fontes"
+msgstr "Environment - Sources"
+
+#: app/templates/category/Health_Software.html:4
+msgid "Saúde - Aplicações"
+msgstr "Health - Applications"
+
+#: app/templates/category/Health_Source.html:4
+msgid "Saúde - Fontes"
+msgstr "Health - Sources"
+
+#: app/templates/category/IBGE_Software.html:4
+msgid "IBGE - Aplicações"
+msgstr "IBGE - Applications"
+
+#: app/templates/category/IBGE_Source.html:4
+msgid "IBGE - Fontes"
+msgstr "IBGE - Sources"
+
+#: app/templates/category/MovieTheater_Software.html:4
+msgid "Cinema - Aplicações"
+msgstr "Movie theater - Applications"
+
+#: app/templates/category/MovieTheater_Source.html:4
+msgid "Cinema - Fontes"
+msgstr "Movie theater - Sources"
+
+#: app/templates/category/Music_Software.html:4
+msgid "Música - Aplicações"
+msgstr "Music - Applications"
+
+#: app/templates/category/Music_Source.html:4
+msgid "Música - Fontes"
+msgstr "Music - Sources"
+
+#: app/templates/category/PublicSecurity_Software.html:4
+msgid "Segurança Pública - Aplicações"
+msgstr "Public security - Applications"
+
+#: app/templates/category/PublicSecurity_Source.html:4
+msgid "Segurança Pública - Fontes"
+msgstr "Public security - Sources"
+
+#: app/templates/category/PublicSpending_Software.html:4
+msgid "Gastos Públicos - Aplicações"
+msgstr "Public spending - Applications"
+
+#: app/templates/category/PublicSpending_Source.html:4
+msgid "Gastos Públicos - Fontes"
+msgstr "Public spending - Sources"
+
+#: app/templates/category/Recreation_Software.html:4
+msgid "Lazer - Aplicações"
+msgstr "Recreation - Applications"
+
+#: app/templates/category/Recreation_Source.html:4
+msgid "Lazer - Fontes"
+msgstr "Recreation - Sources"
+
+#: app/templates/category/Science_Software.html:4
+msgid "Ciência - Aplicações"
+msgstr "Science - Applications"
+
+#: app/templates/category/Science_Source.html:4
+msgid "Ciência - Fontes"
+msgstr "Science - Sources"
+
+#: app/templates/category/Technology_Software.html:4
+msgid "Tecnologia - Aplicações"
+msgstr "Technology - Applications"
+
+#: app/templates/category/Technology_Source.html:4
+msgid "Tecnologia - Fontes"
+msgstr "Technology - Sources"
+
+#: app/templates/email/reset_password.html:1
+msgid "Olá,"
+msgstr "Hello,"
+
+#: app/templates/email/reset_password.html:3
+msgid "Para renomear sua senha"
+msgstr "To rename your password"
+
+#: app/templates/email/reset_password.html:5
+msgid "Clique aqui"
+msgstr "click here"
+
+#: app/templates/email/reset_password.html:7
+msgid ""
+"Como alternativa, você pode colar o seguinte link na barra de endereço do"
+" seu navegador:"
+msgstr "Alternatively, you can paste the following link in the your browser:"
+
+#: app/templates/email/reset_password.html:9
+msgid ""
+"Caso você não tenha solicitado renomeação de senha, simplesmente ignore "
+"está mensagem."
+msgstr "If you have not requested a password renewal, simply ignore this message."
+
+#: app/templates/email/reset_password.html:10
+msgid "Atenciosamente,"
+msgstr "Best regards,"
+
+#: app/templates/errors/404.html:5
 msgid "Página não encontrada"
 msgstr "Not Found"
 
-#: app/templates/errors/404.html:5 app/templates/errors/500.html:6
-msgid "Voltar"
-msgstr "Back"
+#: app/templates/errors/404.html:8
+msgid "Erro: 404"
+msgstr "Error: 404"
 
-#: app/templates/errors/500.html:4
+#: app/templates/errors/404.html:9
+msgid "Opss! A página solicitada não pode ser encontrada."
+msgstr "Oops! The requested page cannot be found."
+
+#: app/templates/errors/404.html:10 app/templates/errors/500.html:10
+msgid "Voltar para Dados Livres"
+msgstr "Back to Free Data"
+
+#: app/templates/errors/500.html:5
 msgid "Ocorreu um erro inesperado"
 msgstr "An unexpected error has occurred"
 
-#: app/templates/errors/500.html:5
+#: app/templates/errors/500.html:8
+msgid "Erro: 505"
+msgstr "Error: 505"
+
+#: app/templates/errors/500.html:9
 msgid "O administrador foi notificado. Descupe pela incoveniência"
 msgstr "The administrator has been notified. Sorry for the inconvenience!"
-
-#~ msgid "Esfera"
-#~ msgstr "Sphere"
-
-#~ msgid "Link Oficial"
-#~ msgstr "Official Link"
-
-#~ msgid "Tag"
-#~ msgstr "Tag"
-
-#~ msgid "Licença"
-#~ msgstr "License"
-
-#~ msgid "Desenvolvedor Ativo"
-#~ msgstr "Active Development"
-
-#~ msgid "Link para Download"
-#~ msgstr "Download Link "
-
-#~ msgid "Data de Criação"
-#~ msgstr "Date Creation"
-
-#~ msgid "Cadastre uma fonte de dados"
-#~ msgstr "Register a data source"
-
-#~ msgid "Cadastre um software de dados"
-#~ msgstr "Register a data software"
-
-#~ msgid "Edite seu perfil de usuário aqui!"
-#~ msgstr "Edit your profile"
-

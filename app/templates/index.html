@@ -1,42 +1,55 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
-
 {% block app_content %}
-			<h1>{{ _('Dados Livres') }}</h1>
-			<p>{{ _('Plataforma Livre de Dados Abertos Governamentais que permite o compartilhamento
-					e a colobaração na identificação de fontes de dados abertos e aplicações
-					que fazem uso desse tipo de informação.') }}</p>
-			<a href="https://github.com/pbaesse/plataforma-livre-dados-abertos" target="_blank">{{ _('(Colabore no GitHub)') }}</a>
-			<br><br>
-			{% if g.search_form %}
-      		<form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
-          		<div class="form-group">
-              		{{ g.search_form.q(size=125, class='form-control',
-                  		placeholder=g.search_form.q.label.text) }}
-              </div>
-					</form>
-			{% endif %}
-			<br><br>
-			<p>Principais categorias: <a href="">esfera federal</a>,
-			<a href="">esfera estadual</a>, <a href="">esfera municipal</a>,
-			<a href="">saúde</a>, <a href="">educação</a>,
-			<a href="">segurança pública</a>, <a href="">meio ambiente</a></p>
-			<br>
-
-			<h2>Lista de fontes cadastradas:</h2>
-			{% for post in posts %}
-				{% include '_post.html' %}<br>
-			{% endfor %}
-			<br>
-			<h2>Lista de softwares cadastrados:</h2>
-			{% for software in softwares %}
-				{% include '_software.html' %}<br>
-			{% endfor %}
-
-			{% if prev_url %}
-			<a href="{{ prev_url }}">Mais recentes</a>
-			{% endif %}
-			{% if next_url %}
-			<a href="{{ next_url }}">Mais antigas</a>
-			{% endif %}
+<div class="jumbotron">
+	<h1 class="text-center">{{ _('Dados Livres') }}</h1><br>
+	<p class="text-center" style="color: #03071E;">{{ _('Plataforma Dados Livres
+			que permite o compartilhamento e a colaboração na identificação de Fontes
+			de Dados Abertos e Aplicações que fazem uso desse tipo de informação,
+			de modo a gerar controle social e transparência pública para a sociedade civil.') }}</p>
+</div>
+<div class="row">
+	<h2 class="text-center">{{_('Encontre as principais categorias de Fontes Abertas')}}</h2><br>
+	<div class="col-sm-4 col-md-4">
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.Covid19_Source') }}" id="category-link">{{_('Corona Vírus')}}</a></h4>
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.Health_Source') }}" id="category-link">{{_('Saúde')}}</a></h4>
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.Education_Source') }}" id="category-link">{{_('Educação')}}</a></h4>
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.Culture_Source') }}" id="category-link">{{_('Cultura')}}</a></h4>
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.PublicSpending_Source') }}" id="category-link">{{_('Gastos Públicos')}}</a></h4>
+	</div>
+	<div class="col-sm-4 col-md-4">
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.MovieTheater_Source') }}" id="category-link">{{_('Cinema')}}</a></h4>
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.Music_Source') }}" id="category-link">{{_('Música')}}</a></h4>
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.Technology_Source') }}" id="category-link">{{_('Tecnologia')}}</a></h4>
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.Countries_Source') }}" id="category-link">{{_('Países')}}</a></h4>
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.Recreation_Source') }}" id="category-link">{{_('Lazer')}}</a></h4>
+	</div>
+	<div class="col-sm-4 col-md-4">
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.Science_Source') }}" id="category-link">{{_('Ciência')}}</a></h4>
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.PublicSpending_Source') }}" id="category-link">{{_('Segurança Pública')}}</a></h4>
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.Environment_Source') }}" id="category-link">{{_('Meio Ambiente')}}</a></h4>
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.IBGE_Source') }}" id="category-link">{{_('IBGE')}}</a></h4>
+		<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.Climate_Source') }}" id="category-link">{{_('Clima')}}</a></h4>
+	</div>
+</div><br>
+<div class="row">
+	<h2 class="text-center">{{_('Fonte registrada recentemente')}}</h2><br>
+	<div class="col-sm-3 col-md-4"></div>
+	<div class="col-sm-6 col-md-6">
+		{% for source in sources %}
+			{% include '_source.html' %}<br>
+		{% endfor%}
+	</div>
+	<div class="col-sm-3 col-md-4"></div>
+</div>
+<div class="row">
+	<h2 class="text-center">{{_('Aplicação registrada recentemente')}}</h2><br>
+	<div class="col-sm-3 col-md-4"></div>
+	<div class="col-sm-6 col-md-6">
+		{% for software in softwares %}
+			{% include '_software.html' %}<br>
+		{% endfor%}
+	</div>
+	<div class="col-sm-3 col-md-4"></div>
+</div>
 {% endblock %}

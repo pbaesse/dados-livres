@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
-
 {% block app_content %}
-    <h1>{{ _('Registre-se') }}</h1>
-    <div class="row">
-        <div class="col-md-4">
+    <h1 class="text-center">{{ _('Inscreva-se em Dados Livres') }}</h1>
+    <p class="text-center">{{ _('Inscreva-se em Dados Livres e ajude a colaborar com
+      diversas fontes e aplicações em dados abertos.') }}</p><br><br>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
             {{ wtf.quick_form(form) }}
         </div>
-    </div>
+        <div class="col-md-3"></div>
+      </div><br><br>
+    <p class="text-center">{{ _('Já tem uma conta?')}} <a href="{{ url_for('auth.login') }}" id="color-red">{{_('Entre')}}</a></p>>
 {% endblock %}

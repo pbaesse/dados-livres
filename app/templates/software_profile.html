@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block app_content %}
+  <div class="row">
+    <div class="col-md-12">
+      <h1>{% if software.title %}{{ software.title }}{% endif %}</h1><br><br>
+      <p>{{_('Categoria')}}: {% for category in software.categories %}
+        {{ category }}{% endfor %} | {% if software.owner %}{{_('Desenvolvedor')}}:
+        {{ software.owner }}{% endif %} | {% if software.license %}{{_('Licença')}}: {{ software.license }}{% endif %}
+        {% if software.dateCreation %} | {{_('Data de criação')}}: {{ software.dateCreation }}{% endif %}</p>
+      <input type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput"><br><br>
+      <p>{% if software.description %}{{ software.description }}{% endif %}</p>
+      {% if not current_user.is_anonymous %}
+        <p><a href="{{ url_for('main.edit_software', id=software.id) }}" id="color-red">{{_('Editar Aplicação')}}</a> |
+          <a href="{{ url_for('main.deletar_software', id=software.id) }}" id="color-red">{{_('Excluir Aplicação')}}</a></p>
+      {% endif %}
+      <br><h4><a href="{{ software.officialLink }}" id="buttonPerfil" target="_blank">{{_('Visitar Página Oficial')}}</a><h4><br>
+      <h4>{{_('Aplicação registrada por')}}:
+        <a href="{{ url_for('main.user', username=software.author.username ) }}" id="color-red">
+          {{ software.author.username }}</a></h4>
+    </div>
+  </div>
+{% endblock %}

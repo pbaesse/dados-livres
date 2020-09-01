@@ -1,26 +1,33 @@
+#!/usr/bin/env python# -*- coding: utf-8 -*-
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 from flask import Flask, request, current_app
 import threading
-from flask_admin import Admin
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import MetaData
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 from flask_login import LoginManager
-from flask_mail import Mail
+from flask_mail import Mail, Message
 from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
 from flask_bootstrap import Bootstrap
 from elasticsearch import Elasticsearch
 from config import Config
 
-admin = Admin()
-db = SQLAlchemy()
+naming_convention = {
+    "ix": 'ix_%(column_0_label)s',
+    "uq": "uq_%(table_name)s_%(column_0_name)s",
+    "ck": "ck_%(table_name)s_%(column_0_name)s",
+    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+    "pk": "pk_%(table_name)s"
+}
+db = SQLAlchemy(metadata=MetaData(naming_convention=naming_convention))
 migrate = Migrate()
 login = LoginManager()
 login.login_view = 'auth.login'
-login.login_message = _l('Para acessar essa página entre como usuário')
+login.login_message = _l('Entre em Dados Livres para acessar está página')
 mail = Mail()
 moment = Moment()
 babel = Babel()
@@ -31,8 +38,7 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     db.init_app(app)
-    admin.init_app(app)
-    migrate.init_app(app, db)
+    migrate.init_app(app, db, render_as_batch=True)
     login.init_app(app)
     mail.init_app(app)
     bootstrap.init_app(app)
@@ -48,6 +54,9 @@ def create_app(config_class=Config):
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
+    from app.category import bp as category_bp
+    app.register_blueprint(category_bp, url_prefix='/category')
+
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
 
@@ -55,15 +64,14 @@ def create_app(config_class=Config):
         if app.config['MAIL_SERVER']:
             auth = None
             if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
-                auth = (app.config['MAIL_USERNAME'],
-                        app.config['MAIL_PASSWORD'])
+                auth = (app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
             secure = None
             if app.config['MAIL_USE_TLS']:
                 secure = ()
             mail_handler = SMTPHandler(
                 mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
                 fromaddr='no-reply@' + app.config['MAIL_SERVER'],
-                toaddrs=app.config['ADMINS'], subject='Microblog Failure',
+                toaddrs=app.config['ADMINS'], subject='Plataforma Dados Livres',
                 credentials=auth, secure=secure)
             mail_handler.setLevel(logging.ERROR)
             app.logger.addHandler(mail_handler)

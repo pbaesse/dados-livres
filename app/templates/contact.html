@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block app_content %}
+<h1 class="text-center">{{_('Contato')}}</h1><br><br>
+<p class="text-center">{{_('Se preferir, mande um e-mail diretamente para o
+  endereço: dadoslivres@contato.com')}}<p><br>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+      {{ wtf.quick_form(form) }}
+  </div>
+  <div class="col-md-3"></div>
+</div>
+{% endblock %}

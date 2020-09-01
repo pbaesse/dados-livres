@@ -1,42 +1,30 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
-
 {% block app_content %}
-    <table class="table table-hover">
-        <tr>
-              <td width="256px"><img src="{{ user.avatar(256) }}"></td>
-              <td>
-                  <h1>{{ _('Usuário') }}: {{ user.username }}</h1>
-                  {% if user.nickname %}<p>{{ _('Apelido') }}: {{ user.nickname }}</p>{% endif %}
-  	              {% if user.about_me %}<p>{{ _('Descrição') }}: {{ user.about_me }}</p>{% endif %}
-                  {% if user.last_seen %}<p>{{ _('Visto pela última vez') }}: {{ moment(user.last_seen).format('LLL') }}</p>{% endif %}
-                  <p>{{ user.followers.count() }} {{ _('seguidores') }}, {{ user.followed.count() }} {{ _('seguindo') }}.</p>
-                  {% if user == current_user %}
-                    <p><a href="{{ url_for('main.edit_profile') }}">{{ _('Edite seu perfil') }}</a> |
-                     <a href="{{ url_for('main.deletar_user', id=user.id) }}">{{ _('Excluia seu perfil') }}</a></p>
-                  {% elif not current_user.is_following(user) %}
-                    <p><a href="{{ url_for('main.follow', username=user.username) }}">{{ _('Seguir') }}</a></p>
-                  {% else %}
-                    <p><a href="{{ url_for('main.unfollow', username=user.username) }}">{{ _('Deixar de seguir') }}</a></p>
-                  {% endif %}
-              </td>
-          </tr>
-      </table>
-
-      <h2>Fontes:</h2>
-      {% for post in posts %}
-        {% include '_post.html' %}
-      {% endfor %}<br>
-      <h2>Softwares:</h2>
-      {% for software in softwares %}
-        {% include '_software.html' %}
-      {% endfor %}
-
-      {% if prev_url %}
-  		<a href="{{ prev_url }}">Fontes mais recentes</a>
-			{% endif %}
-			{% if next_url %}
-			<a href="{{ next_url }}">Fontes mais antigas</a>
-			{% endif %}
-
+  <div class="row">
+    <div class="col-md-12">
+      <img src="{{ user.avatar(100) }}" id="imagem_user" alt="foto de perfil do usuário">
+      <h1>{% if user.username %}{{ user.username }}{% endif %} <br>
+      <small>{% if user.nickname %}{{ user.nickname }}{% endif %}</small></h1>
+    </div></div>
+  <div class="row">
+    <div class="col-md-12">
+      <p>{% if user.about_me %}{{ user.about_me }}{% endif %}</p>
+      {% if not current_user.is_anonymous %}
+        <p><a href="{{ url_for('main.edit_profile') }}" id="color-red">{{_('Editar Perfil')}}</a></p>
+      {% endif %}
+    </div>
+  </div><br><br>
+    <div class="row">
+      <div class="col-md-12">
+        <h4><strong>{{_('Fontes registradas por')}} {{ user.username }}:</strong></h4><br>
+        {% for source in sources %}
+          {% include '_source.html' %}<hr>
+        {% endfor %}<br><br>
+        <h4><strong>{{_('Aplicações registradas por')}} {{ user.username }}:</strong></h4><br>
+        {% for software in softwares %}
+          {% include '_software.html' %}<hr>
+        {% endfor %}
+      </div>
+    </div>
 {% endblock %}

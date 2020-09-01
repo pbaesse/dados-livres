@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block app_content %}
+<h1 class="text-center">{{ _('Saúde - Fontes') }}</h1><br><br>
+<div class="row">
+  <div class="col-md-6">
+    {% for source in sources %}
+      {% include '_source.html' %}<hr><br>
+    {% endfor%}
+  </div>
+</div>
+{% endblock %}

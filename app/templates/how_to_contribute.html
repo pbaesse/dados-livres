@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block app_content %}
+<div class="row">
+  <h1 class="text-center">{{_('Como contribuir?')}}</h1><br><br>
+  <div class="col-md-12 text-justify">
+    <p>A plataforma Dados Livres cresce através de colaboraçõesUma das maneiras mais facies em que qualquer usuário
+       <a href="{{url_for('auth.login')}}" id="color-red" target="_blank">inscrito</a> na
+       plataforma Dados Livres pode contribuir é ajudando no registro de
+       <a href="{{url_for('main.register_source')}}" id="color-red" target="_blank">fontes</a> e
+       <a href="{{url_for('main.register_software')}}" id="color-red" target="_blank">aplicações</a>
+       através de simples formulários.<br><br>Dessa maneira, mesmo um usuário sem
+       conhecimento técnico pode incentivar dadoslivres.org a se tornar uma plataforma diversa.</p><br><br>
+    <p>Dados Livres é licenciado como Software Livre e seu Código-Fonte para possíveis colaborações
+       se encontra no repositório do <a href="https://gitlab.com/pbaesse/dados-livres" id="color-red" target="_blank">GitLab</a>.
+       Abaixo confira algumas outras maneiras de contribuição:</p><br><br>
+
+
+
+       Dados Livres, consiste em ser uma plataforma de compartilhamento e colaboração de seus usuários na identificação de fontes e aplicações que usam de informações distribuídas em dados abertos de maneira fácil e intuitiva, de modo, a gerar participação de seu público em temas que envolvam diretamente a sociedade civil.
+
+       Qualquer usuário inscrito em Dados Livres pode contribuir através do registro simples de fontes e aplicações
+       por preenchimento de formulários. Dessa maneira, a sua colaboração ajuda a facilitar o acesso de informações públicas e, ao mesmo tempo, incentivar o crescimento dadoslivres.org.
+
+       Dados Livres é licenciado como Software Livre e seu Código-Fonte para possíveis colaborações
+       se encontra no repositório do GitLab. Abaixo confira algumas outras maneiras de contribuição:
+
+
+
+    <ul>
+      <li><h4><strong>API</strong></h4></li><br>
+      <p>Como contribuir?</p><hr><br><br>
+      <li><h4><strong>Documentação</strong></h4></li><br>
+      <p>Como contribuir?</p><hr><br><br>
+      <li><h4><strong>Código-Fonte</strong></h4></li><br>
+      <p>Como contribuir?</p><hr><br><br>
+      <li><h4><strong>Design</strong></h4></li><br>
+      <p>Como contribuir?</p><hr><br><br>
+      <li><h4><strong>Infraestrutura</strong></h4></li><br>
+      <p>Como contribuir?</p><hr><br><br>
+      <li><h4><strong>Testes</strong></h4></li><br>
+      <p>Como contribuir?</p><hr><br><br>
+      <li><h4><strong>Tradução</strong></h4></li><br>
+      <p>Como contribuir?</p><hr><br><br>
+      <li><h4><strong>Segurança</strong></h4></li><br>
+      <p>Como contribuir?</p><hr><br><br>
+      <li><h4><strong>Suporte</strong></h4></li><br>
+      <p>Como contribuir?</p><hr><br><br>
+    </ul>
+  </div>
+</div>
+{% endblock %}

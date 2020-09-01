@@ -1,0 +1,10 @@
+<table>
+  <tr valign="top">
+    <td>
+      <h4><a href="{{ url_for('main.source_profile', title=source.title) }}"
+        id="color-red">{{ source.title }}</a></h4><br>
+      <p>{{_('Categoria')}}: {{ source.category }} | {{_('Esfera')}}: {{ source.sphere }}</p>
+      <input type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput">
+    </td>
+  </tr>
+</table>
