@@ -1,72 +1,55 @@
-# Plataforma Livre de Dados Abertos Governamentais | Dados Livres
+# Dados Livres - Plataforma de Dados Abertos
 
-## Descrição
-A Plataforma Livre de Dados Abertos Governamentais trata-se de um site que nasceu no IFRN — campus Ceará-Mirim no ano de 2018, quando dois alunos tiveram interesse em criar um projeto de pesquisa onde o foco seria ajudar pessoas com informação e, ao mesmo tempo, contribuir com o Software Livre. Então, foi aí que o orientador e mestre Baesse, apresentou os Dados Abertos Governamentais e uma ferramenta que pudesse ser construída unindo tudo isso.
+**Plataforma Dados Livres que permite o compartilhamento e a colaboração na identificação de fontes de dados abertos e aplicações que fazem uso dessas informações.**
 
-Dados Abertos Governamentais são informações que são disponibilizadas pelo governo obrigatoriamente pela Lei de Acesso à Informação, que permite reutiliza-los, reproduzi-los e redistribui-los livremente, sendo alguns dos temas, que podem ser trabalhados: saúde, educação, segurança, meio ambiente, cultura e lazer. Mas nem sempre essas informações estão facilmente acessíveis e visualizáveis, pois elas estão espalhadas em todas as esferas do governo municipal, federal e estadual, então visando suprir essas lacunas foi lançada a Plataforma Livre de Dados Abertos Governamentais, onde o seu principal objetivo é:
+A iniciativa de desenvolver Dados Livres, surgiu inicialmente como um projeto de pesquisa em uma instituição acadêmica do IFRN, no ano de 2019, quando um aluno e uma aluna mostraram interesse de contribuir com projetos que fossem Software Livre e o Prof. Mr. Pedro Baesse apresentou a ideia de desenvolver a plataforma.
 
-> “Mapear fontes de dados abertos governamentais e softwares relacionados para o uso de desenvolvedores e pessoas comuns, onde é o próprio usuário que vai cadastrar tais informações.”
+Alguns diferenciais de Dados Livres é a praticidade, pois suas fontes e aplicações podem ser facilmente cadastradas por qualquer usuário inscrito na plataforma, sem exigir nenhum conhecimento de código, dessa forma, facilitando encontrar vários possíveis colaboradores. Além disso, suas bases de dados podem ser ligadas as aplicações criadas e vice-versa.
 
-Então o usuário poderia cadastrar, por exemplo, a frequência de médicos em hospitais públicos, ou a média escolar em tal ano por alunos de escola pública, ou quantas praças públicas existem nas pequenas cidades em determinada região e, além disso, poder relaciona-las com uma funcionalidade extra que é de cadastrar softwares de dados abertos governamentais, por exemplo, existe a Operação Serenata do Amor que tem como objetivo fiscalizar gastos públicos suspeitos de deputados e poderá ser cadastrada na plataforma.
+A disponibilidade dessas informações abertas direcionadas a sociedade civil gera benefícios como: controle social, transparência pública, democracia, inovação cívica, combate a corrupção e vários outros.
 
-Este software, visa ter um grande número de engajamento, participação e colaboração do público, onde pode servir tanto para pessoas comuns, como para pesquisadores e jornalistas e ainda para qualquer desenvolvedor que queira contribuir com o seu código-fonte que será distribuído em Software Livre com as suas principais tecnologias Python e a MicroFramework Flask. Assim, gerando participação popular, democracia, controle social e transparência para reivindicar mudanças e decidir novos projetos de lei.
+# Problemas conhecidos e possíveis melhorias
 
-## Problemas conhecidos e possíveis melhorias
+# Como instalar
 
-
-## Como instalar
-
-#### Iniciando o repositório: 
+Faça um fork do projeto Dados Livres e em seguida clone o repositório Forkado por você:
 ```sh
-git clone https://github.com/pbaesse/plataforma-livre-dados-abertos
-cd plataforma-livre-dados-abertos
+$ git clone https://gitlab.com/pbaesse/dados-livres.git
+$ cd dados-livres       (entre na pasta clonada)
 ```
-
-#### Usando o ambiente virtual (Virtualenv)
-
-Instalando... (no Linux já vêm instalado)
+Use um ambiente virtual para fazer as instalações utilizadas na aplicação - Virtualenv:
 ```sh
 $ virtualenv venv
 ```
-Criando...
+Para criar o ambiente virtual:
 ```sh
 $ python3 -m venv venv
 ```
-Ativando...
+Para ativar o ambiente virtual:
 ```sh
 $ source venv/bin/activate       (Linux)
 $ source venv\Script\activate    (Windows)
 ```
-
-#### Instalando a lista de pacotes
-Os pacotes estão salvos em um arquivo requirements. Para instala-los:
+E finalmente, instale a lista de pacotes da aplicação:
 ```sh
 $ pip install -r requirements.txt
 ```
-
-#### Exportando as variáveis de ambiente
-```sh
-$ export FLASK_APP=plataforma.py
-$ export FLASK_DEBUG=1
-```
-
-#### Rodando a plataforma web com Flask
-Flask, roda com o comando:
+Para rodar a aplicação utilize o comando:
 ```sh
 $ flask run
 ```
-Endereço que roda o servidor (Localhost: Porta 5000):
+Acesse no seu navegador o seguinte endereço abaixo:
 ```sh
 http://localhost:5000/
 ```
 
-## Lista de autores
-- Maria Carolina: [@mariacarolinass](https://github.com/MariaCarolinass)
-- Luiz Felipe: [@luiz200](https://github.com/luiz200/)
+# Lista de autores
+- Carolina Soares ([@mariacarolinass](https://gitlab.com/mariacarolinass))
 
-## Licença
-GPL
-Software Livre
+# Licença
+Dados Livres é Licenciado sob Licença GPL-3.0.
 
-## Contato
-- pbaesse@gmail.com | @pbaesse
+# Contato
+E-mail para contato: pbaesse@gmail.com
+Outros meios de contato:
+- Telegram: [carols0](https://t.me/carols0) ou [pbaesse](https://t.me/pbaesse)
