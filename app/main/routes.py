@@ -60,7 +60,7 @@ def index():
         Category.category, Tag.tag).filter(
         Category.software_id == Software.id, Tag.software_id == Software.id).order_by(
         Software.timestamp.desc()).paginate(page=page, per_page=1)
-    return render_template('index.html', title=(_('Página Principal')),
+    return render_template('index.html', title=(_('Página Inicial')),
         sources=sources.items, softwares=softwares.items, remove_accents=remove_accents)
 
 @bp.route('/', methods=['GET', 'POST'])
