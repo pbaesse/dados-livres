@@ -311,10 +311,10 @@ def contact():
         msg.body = """
         Enviado por: %s
         E-mail: %s
-        Mensagem: %s""" % (form.username.data, form.email.data, form.message.data)
+        Assunto: %s
+        Mensagem: %s""" % (form.username.data, form.email.data, form.subject.data, form.message.data)
         mail.send(msg)
         flash(_('Seu e-mail foi enviado, agradecemos pelo contato'))
-        return render_template('contact.html', title=(_('Contato')),
-            form=form)
+        return render_template('contact.html', title=(_('Contato')), form=form)
     elif request.method == 'GET':
-        return render_template('contact.html',  title=(_('Contato')), form=form)
+        return render_template('contact.html', title=(_('Contato')), form=form)

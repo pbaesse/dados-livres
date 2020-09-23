@@ -144,6 +144,8 @@ class ContactForm(FlaskForm):
         Length(min=3)], render_kw={"placeholder": "Digite seu nome"})
     email = StringField(_l('E-mail: *'), validators=[DataRequired(), Email()],
         render_kw={"placeholder": "Digite seu e-mail"})
+    subject = StringField(_l('Assunto: *'), validators=[DataRequired()],
+        render_kw={"placeholder": "Digite o assunto do e-mail"})
     message = TextAreaField(_l('Mensagem: *'), validators=[DataRequired(),
-        Length(min=4, max=500)], render_kw={"rows": 6, "placeholder": "Digite sua mensagem"})
+        Length(min=4, max=500)], render_kw={"rows": 6, "placeholder": "Digite a mensagem do e-mail"})
     submit = SubmitField(_l('Enviar'))
