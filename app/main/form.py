@@ -96,7 +96,7 @@ class SoftwareForm(FlaskForm):
     owner = StringField(_l('Desenvolvedor: *'), validators=[DataRequired(),
         Length(min=3)], render_kw={"placeholder": "Digite qual a pessoa desenvolvedora/empresa da aplicação"})
     dateCreation = StringField(_l('Data de Criação:'),
-        render_kw={"placeholder": "Digite a data de criação da Aplicação"})
+        render_kw={"placeholder": "Digite a data de criação (formato: 12/02/2020)"})
     license = SelectField(_l('Licença: *'), validators=[DataRequired()],
         choices=[('Apache License 2.0', 'Apache License 2.0'),
         ('GNU General Public License v3.0','GNU General Public License v3.0'),
