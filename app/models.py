@@ -67,7 +67,8 @@ class Source(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     tags = db.relationship('Tag', backref='source_tag', lazy='dynamic')
     categories = db.relationship('Category', backref='source_category', lazy='dynamic')
-
+    comments = db.relationship('Comment', backref='source_comment', lazy='dynamic')
+    reports = db.relationship('Report', backref='source_report', lazy='dynamic')
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
@@ -89,7 +90,8 @@ class Software(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     tags = db.relationship('Tag', backref='software_tag', lazy='dynamic')
     categories = db.relationship('Category', backref='software_category', lazy='dynamic')
-
+    comments = db.relationship('Comment', backref='software_comment', lazy='dynamic')
+    reports = db.relationship('Report', backref='software_report', lazy='dynamic')
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
@@ -104,7 +106,6 @@ class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     tag = db.Column(db.String(200), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-
     source_id = db.Column(db.Integer, db.ForeignKey('source.id'))
     software_id = db.Column(db.Integer, db.ForeignKey('software.id'))
 
@@ -120,7 +121,6 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(200), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-
     source_id = db.Column(db.Integer, db.ForeignKey('source.id'))
     software_id = db.Column(db.Integer, db.ForeignKey('software.id'))
 
@@ -134,6 +134,8 @@ class Comment(db.Model):
     username = db.Column(db.String(200), index=True)
     text = db.Column(db.String(600), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    source_id = db.Column(db.Integer, db.ForeignKey('source.id'))
+    software_id = db.Column(db.Integer, db.ForeignKey('software.id'))
 
     def __repr__(self):
         return '{}'.format(self.username)
@@ -146,7 +148,6 @@ class Report(db.Model):
     description = db.Column(db.String(500), index=True)
     type = db.Column(db.String(200), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-
     source_id = db.Column(db.Integer, db.ForeignKey('source.id'))
     software_id = db.Column(db.Integer, db.ForeignKey('software.id'))
 
