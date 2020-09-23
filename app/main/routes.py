@@ -104,11 +104,15 @@ def source_profile(title):
 @login_required
 def edit_source(id):
     source = Source.query.get_or_404(id)
+    tag = Tag.query.filter(
+        Tag.source_id == Source.id, Source.id == id).first_or_404()
+    category = Category.query.filter(
+        Category.source_id == Source.id, Source.id == id).first_or_404()
     form = SourceForm()
     if form.validate_on_submit():
         source.title = form.title.data
-        source.tag = form.tag.data
-        source.category = form.category.data
+        tag.tag = form.tag.data
+        category.category = form.category.data
         source.officialLink = form.officialLink.data
         source.sphere = form.sphere.data
         source.city = form.city.data
@@ -116,12 +120,16 @@ def edit_source(id):
         source.country = form.country.data
         source.description = form.description.data
         db.session.add(source)
+        db.session.flush()
+        db.session.add(tag)
+        db.session.flush()
+        db.session.add(category)
+        db.session.flush()
         db.session.commit()
         flash(_('As alterações foram salvas'))
-        return redirect(url_for('main.source', title=source.title))
     form.title.data = source.title
-    form.tag.data = source.tag
-    form.category.data = source.category
+    form.tag.data = tag.tag
+    form.category.data = category.category
     form.officialLink.data = source.officialLink
     form.sphere.data = source.sphere
     form.city.data = source.city
@@ -129,22 +137,24 @@ def edit_source(id):
     form.country.data = source.country
     form.description.data = source.description
     return render_template('edit_source.html', title=(_('Editar Fonte')),
-                           form=form, source=source)
+                           form=form, source=source, tag=tag, category=category)
 
 @bp.route("/deletar_source/<int:id>")
 @login_required
 def deletar_source(id):
     source = Source.query.filter_by(id=id).first()
+    tag = Tag.query.filter(
+        Tag.source_id == Source.id, Source.id == id).first_or_404()
+    category = Category.query.filter(
+        Category.source_id == Source.id, Source.id == id).first_or_404()
     db.session.delete(source)
     db.session.flush()
-    tag = Tag.query.filter_by(id=id).first()
     db.session.delete(tag)
     db.session.flush()
-    category = Category.query.filter_by(id=id).first()
     db.session.delete(category)
     db.session.flush()
     db.session.commit()
-    flash(_('A fonte foi deletada'))
+    flash(_('A fonte foi apagada'))
     return redirect(url_for("main.index"))
 
 @bp.route('/register_software', methods=['GET', 'POST'])
@@ -179,45 +189,55 @@ def software_profile(title):
 @login_required
 def edit_software(id):
     software = Software.query.get_or_404(id)
+    tag = Tag.query.filter(
+        Tag.software_id == Software.id, Software.id == id).first_or_404()
+    category = Category.query.filter(
+        Category.software_id == Software.id, Software.id == id).first_or_404()
     form = SoftwareForm()
     if form.validate_on_submit():
         software.title = form.title.data
-        software.tag = form.tag.data
-        software.category = form.category.data
+        tag.tag = form.tag.data
+        category.category = form.category.data
         software.officialLink = form.officialLink.data
         software.owner = form.owner.data
         software.dateCreation = form.dateCreation.data
         software.license = form.license.data
         software.description = form.description.data
         db.session.add(software)
+        db.session.flush()
+        db.session.add(tag)
+        db.session.flush()
+        db.session.add(category)
+        db.session.flush()
         db.session.commit()
         flash(_('Suas alterações foram salvas'))
-        return redirect(url_for('main.software', title=software.title))
     form.title.data = software.title
-    form.tag.data = software.tag
-    form.category.data = software.category
+    form.tag.data = tag.tag
+    form.category.data = category.category
     form.officialLink.data = software.officialLink
     form.owner.data = software.owner
     form.dateCreation.data = software.dateCreation
     form.license.data = software.license
     form.description.data = software.description
     return render_template('edit_software.html', title=(_('Editar Aplicação')),
-        form=form,software=software)
+        form=form, software=software, tag=tag, category=category)
 
 @bp.route("/deletar_software/<int:id>")
 @login_required
 def deletar_software(id):
     software = Software.query.filter_by(id=id).first()
+    tag = Tag.query.filter(
+        Tag.software_id == Software.id, Software.id == id).first_or_404()
+    category = Category.query.filter(
+        Category.software_id == Software.id, Software.id == id).first_or_404()
     db.session.delete(software)
     db.session.flush()
-    tag = Tag.query.filter_by(id=id).first()
     db.session.delete(tag)
     db.session.flush()
-    category = Category.query.filter_by(id=id).first()
     db.session.delete(category)
     db.session.flush()
     db.session.commit()
-    flash(_('A fonte foi deletada'))
+    flash(_('A aplicação foi apagada'))
     return redirect(url_for("main.index"))
 
 @bp.route('/user/<username>', methods=['GET', 'POST'])
