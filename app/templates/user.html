@@ -10,18 +10,18 @@
   <div class="row">
     <div class="col-md-12">
       <p>{% if user.about_me %}{{ user.about_me }}{% endif %}</p>
-      {% if not current_user.is_anonymous %}
+      {% if user == current_user %}
         <p><a href="{{ url_for('main.edit_profile') }}" id="color-red">{{_('Editar Perfil')}}</a></p>
       {% endif %}
     </div>
   </div><br><br>
     <div class="row">
       <div class="col-md-12">
-        <h4><strong>{{_('Fontes registradas por')}} {{ user.username }}:</strong></h4><br>
+        <h4>{{_('Fontes registradas por')}} {{ user.username }}:</h4><br>
         {% for source in sources %}
           {% include '_source.html' %}<hr>
         {% endfor %}<br><br>
-        <h4><strong>{{_('Aplicações registradas por')}} {{ user.username }}:</strong></h4><br>
+        <h4>{{_('Aplicações registradas por')}} {{ user.username }}:</h4><br>
         {% for software in softwares %}
           {% include '_software.html' %}<hr>
         {% endfor %}
