@@ -56,6 +56,14 @@ a#navbar:hover {
   height: auto;
 }
 
+div img#imagem_user {
+  float: left;
+  margin: 10px 40px 40px 0;
+  min-width: 140px;
+  border-radius: 100px;
+  border: 1px solid #ddb9b9;
+}
+
 a#buttonIndex {
   padding: 20px;
   display: flex;
@@ -130,12 +138,4 @@ a#color-black{
 
 a#color-black:hover {
  color: #9d0208;
-}
-
-div img#imagem_user {
-  float: left;
-  margin: 10px 40px 40px 0;
-  min-width: 140px;
-  border-radius: 100px;
-  border: 1px solid #ddb9b9;
 }
