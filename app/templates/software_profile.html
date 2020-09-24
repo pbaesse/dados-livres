@@ -8,11 +8,11 @@
         {{ category }}{% endfor %} | {% if software.owner %}{{_('Desenvolvedor')}}:
         {{ software.owner }}{% endif %} | {% if software.license %}{{_('Licença')}}: {{ software.license }}{% endif %}
         {% if software.dateCreation %} | {{_('Data de criação')}}: {{ software.dateCreation }}{% endif %}</p>
-      <input type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput"><br><br>
+      <p>{{_('Palavras-Chaves')}}: {% for tag in software.tags %}{{ tag }}{% endfor %}</p>
       <p>{% if software.description %}{{ software.description }}{% endif %}</p>
-      {% if not current_user.is_anonymous %}
+      {% if software.user_id == current_user.id %}
         <p><a href="{{ url_for('main.edit_software', id=software.id) }}" id="color-red">{{_('Editar Aplicação')}}</a> |
-          <a href="{{ url_for('main.deletar_software', id=software.id) }}" id="color-red">{{_('Excluir Aplicação')}}</a></p>
+          <a href="{{ url_for('main.deletar_software', id=software.id) }}" id="color-red">{{_('Apagar Aplicação')}}</a></p>
       {% endif %}
       <br><h4><a href="{{ software.officialLink }}" id="buttonPerfil" target="_blank">{{_('Visitar Página Oficial')}}</a><h4><br>
       <h4>{{_('Aplicação registrada por')}}:

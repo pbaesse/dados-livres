@@ -10,11 +10,11 @@
         {% if source.city %}| {{_('Município')}}: {{source.city}}{% endif %}
         {% if source.state %}| {{_('Estado')}}: {{source.state}}{% endif %}
         {% if source.country %}| {{_('País')}}: {{source.country}}{% endif %}</p>
-        <input type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput"><br><br>
+        <p>{{_('Palavras-Chaves')}}: {% for tag in source.tags %}{{ tag }}{% endfor %}</p>
         <p>{% if source.description %}{{ source.description }}{% endif %}</p>
-        {% if not current_user.is_anonymous %}
+        {% if source.user_id == current_user.id %}
           <p><a href="{{ url_for('main.edit_source', id=source.id) }}" id="color-red">{{_('Editar Fonte')}}</a> |
-            <a href="{{ url_for('main.deletar_source', id=source.id) }}" id="color-red">{{_('Excluir Fonte')}}</a></p>
+            <a href="{{ url_for('main.deletar_source', id=source.id) }}" id="color-red">{{_('Apagar Fonte')}}</a></p>
         {% endif %}
         <br><h4><a href="{{ source.officialLink }}" id="buttonPerfil" target="_blank">{{_('Visitar Página Oficial')}}</a><h4><br>
         <h4>{{_('Aplicação registrada por')}}:
