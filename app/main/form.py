@@ -70,11 +70,6 @@ class SourceForm(FlaskForm):
         Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a Fonte de Dados Abertos"})
     submit = SubmitField(_l('Registrar'))
 
-    def validate_title(self, title):
-        source = Source.query.filter_by(title=title.data).first()
-        if source is not None:
-            raise ValidationError(_('Essa fonte já está cadastrada. Escolha um título diferente'))
-
 
 class SoftwareForm(FlaskForm):
     title = StringField(_l('Título: *'), validators=[DataRequired(),
@@ -112,11 +107,6 @@ class SoftwareForm(FlaskForm):
     description = TextAreaField(_l('Descrição: *'), validators=[DataRequired(),
         Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a Aplicação"})
     submit = SubmitField(_l('Registrar'))
-
-    def validate_title(self, title):
-        software = Software.query.filter_by(title=title.data).first()
-        if software is not None:
-            raise ValidationError(_('Essa aplicação já está cadastrada. Escolha um título diferente'))
 
 
 class SimilarForm(FlaskForm):
