@@ -12,23 +12,23 @@ from app.models import User, Source, Software, Tag, Category, \
 
 
 class EditProfileForm(FlaskForm):
-	username = StringField(_l('Nome: *'), validators=[DataRequired(),
+    username = StringField(_l('Nome: *'), validators=[DataRequired(),
         Length(min=3)], render_kw={"placeholder": "Digite um nome de usuário"})
-	nickname = StringField(_l('Apelido:'), validators=[Length(max=10)],
-        render_kw={"placeholder": "Digite seu apelido de usuário"})
-	about_me = TextAreaField(_l('Sobre mim:'), validators=[Length(max=250)],
+    nickname = StringField(_l('Apelido: *'), validators=[DataRequired(),
+        Length(max=10)], render_kw={"placeholder": "Digite seu apelido de usuário"})
+    about_me = TextAreaField(_l('Sobre mim:'), validators=[Length(max=250)],
         render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre você"})
-	submit = SubmitField(_l('Salvar'))
+    submit = SubmitField(_l('Salvar'))
 
-	def __init__(self, original_username, *args, **kwargs):
-		super(EditProfileForm, self).__init__(*args, **kwargs)
-		self.original_username = original_username
+    def __init__(self, original_nickname, *args, **kwargs):
+        super(EditProfileForm, self).__init__(*args, **kwargs)
+        self.original_nickname = original_nickname
 
-	def validate_username(self, username):
-		if username.data != self.original_username:
-			user = User.query.filter_by(username=self.username.data).first()
-			if user is not None:
-				raise ValidationError(_('Escolha um nome diferente'))
+    def validate_nickname(self, nickname):
+        if nickname.data != self.original_nickname:
+            user = User.query.filter_by(nickname=self.nickname.data).first()
+            if user is not None:
+                raise ValidationError(_('Esse apelido já está cadastrado. Escolha um apelido diferente'))
 
 
 class EditPasswordForm(FlaskForm):
