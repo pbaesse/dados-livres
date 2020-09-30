@@ -305,6 +305,25 @@ def how_to_contribute():
 @bp.route('/contact', methods=['GET', 'POST'])
 def contact():
     form = ContactForm()
+    while current_user.is_authenticated:
+        if form.validate_on_submit():
+            current_user.username = form.username.data
+        elif request.method == 'GET':
+            form.username.data = current_user.username
+        if request.method == 'POST':
+            msg = Message(form.username.data, sender='dadoslivres.testes@gmail.com',
+            recipients=['m.carolina.soares1@gmail.com'])
+            msg.body = """
+            Enviado por: %s
+            E-mail: %s
+            Assunto: %s
+            Mensagem: %s""" % (form.username.data, form.email.data, form.subject.data, form.message.data)
+            mail.send(msg)
+            flash(_('Seu e-mail foi enviado, agradecemos pelo contato'))
+            return render_template('contact.html', title=(_('Contato')), form=form)
+        elif request.method == 'GET':
+            return render_template('contact.html', title=(_('Contato')), form=form)
+
     if request.method == 'POST':
         msg = Message(form.username.data, sender='dadoslivres.testes@gmail.com',
         recipients=['m.carolina.soares1@gmail.com'])
