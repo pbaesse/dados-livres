@@ -240,9 +240,9 @@ def deletar_software(id):
     flash(_('A aplicação foi apagada'))
     return redirect(url_for("main.index"))
 
-@bp.route('/user/<username>', methods=['GET', 'POST'])
-def user(username):
-    user = User.query.filter_by(username=username).first_or_404()
+@bp.route('/user/<nickname>', methods=['GET', 'POST'])
+def user(nickname):
+    user = User.query.filter_by(nickname=nickname).first_or_404()
     sources = db.session.query(Source.title, Source.sphere,
         Category.category, Tag.tag).filter(Category.source_id == Source.id,
         Tag.source_id == Source.id, Source.user_id == user.id).order_by(
@@ -257,14 +257,14 @@ def user(username):
 @bp.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-    form = EditProfileForm(current_user.username)
+    form = EditProfileForm(current_user.nickname)
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.nickname = form.nickname.data
         current_user.about_me = form.about_me.data
         db.session.commit()
         flash(_('Suas alterações foram salvas'))
-        return redirect(url_for('main.user', username=current_user.username))
+        return redirect(url_for('main.user', nickname=current_user.nickname))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.nickname.data = current_user.nickname
