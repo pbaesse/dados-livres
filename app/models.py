@@ -12,17 +12,17 @@ from app import db, login
 class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(200), index=True, unique=True)
+    nickname = db.Column(db.String(200), unique=True)
+    username = db.Column(db.String(200))
     email = db.Column(db.String(200), index=True, unique=True)
-    password_hash = db.Column(db.String(150))
-    about_me = db.Column(db.String(300))
-    nickname = db.Column(db.String(150))
+    password_hash = db.Column(db.String(200))
+    about_me = db.Column(db.String(500))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     sources = db.relationship('Source', backref='author', lazy='dynamic')
     softwares = db.relationship('Software', backref='author', lazy='dynamic')
 
     def __repr__(self):
-        return 'Olá, {}'.format(self.username)
+        return '{}'.format(self.nickname)
 
     def avatar(self, size):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
