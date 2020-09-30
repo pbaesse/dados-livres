@@ -19,7 +19,7 @@ def login():
 	if form.validate_on_submit():
 		user = User.query.filter_by(email=form.email.data).first()
 		if user is None or not user.check_password(form.senha.data):
-			flash(_('Nome de usuário ou senha inválido'))
+			flash(_('E-mail ou senha inválido'))
 			return redirect(url_for('auth.login'))
 		login_user(user, remember=form.remember_me.data)
 		next_page = request.args.get('next')
@@ -34,7 +34,8 @@ def register():
         return redirect(url_for('main.index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
+        user = User(username=form.username.data, email=form.email.data,
+            nickname=form.nickname.data)
         user.set_password(form.senha.data)
         db.session.add(user)
         db.session.commit()
