@@ -18,8 +18,8 @@
         {% endif %}
         <br><h4><a href="{{ source.officialLink }}" id="buttonPerfil" target="_blank">{{_('Visitar Página Oficial')}}</a><h4><br>
         <h4>{{_('Aplicação registrada por')}}:
-          <a href="{{ url_for('main.user', username=source.author.username ) }}" id="color-red">
-            {{ source.author.username }}</a></h4>
+          <a href="{{ url_for('main.user', nickname=source.author.nickname ) }}" id="color-red">
+            {{ source.author.nickname }}</a></h4>
     </div>
   </div>
 {% endblock %}
