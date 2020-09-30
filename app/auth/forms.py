@@ -17,27 +17,28 @@ class LoginForm(FlaskForm):
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField(_l('Nome: *'), validators=[DataRequired(),
-        Length(min=3)], render_kw={"placeholder": "Digite um nome de usuário"})
+    username = StringField(_l('Nome: *'), validators=[Length(min=3, max=30)],
+        render_kw={"placeholder": "Digite um nome de usuário"})
+    nickname = StringField(_l('Apelido: *'), validators=[DataRequired(),
+        Length(min=3, max=10)], render_kw={"placeholder": "Digite seu @ apelido de usuário"})
     email = StringField(_l('E-mail: *'), validators=[DataRequired(), Email()],
         render_kw={"placeholder": "Digite seu endereço de e-mail"})
     senha = PasswordField(_l('Senha: *'), validators=[DataRequired(),
         Length(min=8)], render_kw={"placeholder": "Digite uma senha \
 (mínimo 8 caracteres)"})
     password2 = PasswordField(_l('Repetir senha: *'), validators=[DataRequired(),
-        EqualTo('senha'), Length(min=8)],
-        render_kw={"placeholder": "Repita a senha anterior (mínimo 8 caracteres)"})
+        EqualTo('senha'), Length(min=8)], render_kw={"placeholder": "Repita a senha anterior (mínimo 8 caracteres)"})
     submit = SubmitField(_l('Inscrever'))
-
-    def validate_username(self, username):
-        user = User.query.filter_by(username=username.data).first()
-        if user is not None:
-            raise ValidationError(_('Esse usuário já está cadastrado. Escolha um nome diferente'))
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError(_('Esse endereço já está cadastrado. Escolha um e-mail diferente'))
+
+    def validate_nickname(self, nickname):
+        user = User.query.filter_by(nickname=nickname.data).first()
+        if user is not None:
+            raise ValidationError(_('Esse apelido já está cadastrado. Escolha um apelido diferente'))
 
 
 class ResetPasswordRequestForm(FlaskForm):
