@@ -17,7 +17,7 @@
       <br><h4><a href="{{ software.officialLink }}" id="buttonPerfil" target="_blank">{{_('Visitar Página Oficial')}}</a><h4><br>
       <h4>{{_('Aplicação registrada por')}}:
         <a href="{{ url_for('main.user', nickname=software.author.nickname ) }}" id="color-red">
-          {{ software.author.nickname }}</a></h4>
+          @{{ software.author.nickname }}</a></h4>
     </div>
   </div>
 {% endblock %}

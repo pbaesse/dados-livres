@@ -2,10 +2,10 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 {% block app_content %}
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-xs-8 col-md-12">
       <img src="{{ user.avatar(100) }}" id="imagem_user" alt="foto de perfil do usuário">
       <h1>{% if user.username %}{{ user.username }}{% endif %} <br>
-      <small>{% if user.nickname %}{{ user.nickname }}{% endif %}</small></h1>
+      <small>{% if user.nickname %}@{{ user.nickname }}{% endif %}</small></h1>
     </div></div>
   <div class="row">
     <div class="col-md-12">
@@ -19,11 +19,11 @@
       <div class="col-md-12">
         <h4>{{_('Fontes registradas por')}} {{ user.username }}:</h4><br>
         {% for source in sources %}
-          {% include '_source.html' %}<hr>
+          <hr>{% include '_source.html' %}<hr>
         {% endfor %}<br><br>
         <h4>{{_('Aplicações registradas por')}} {{ user.username }}:</h4><br>
         {% for software in softwares %}
-          {% include '_software.html' %}<hr>
+          <hr>{% include '_software.html' %}<hr>
         {% endfor %}
       </div>
     </div>
