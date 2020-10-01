@@ -57,6 +57,9 @@ def create_app(config_class=Config):
     from app.category import bp as category_bp
     app.register_blueprint(category_bp, url_prefix='/category')
 
+    from app.util import bp as util_bp
+    app.register_blueprint(util_bp, url_prefix='/util')
+
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
 
