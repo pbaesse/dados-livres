@@ -112,9 +112,6 @@ class Tag(db.Model):
     def __repr__(self):
         return '{}'.format(self.tag)
 
-    def as_dict(self):
-        return {'tag': self.tag}
-
 
 class Category(db.Model):
 
