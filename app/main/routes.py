@@ -9,7 +9,8 @@ from flask_babel import _, get_locale
 from guess_language import guess_language
 from app import db
 from app.main.form import EditProfileForm, EditPasswordForm, \
-    SourceForm, SoftwareForm, CommentForm, ReportForm, ContactForm
+    SourceForm, EditSourceForm, SoftwareForm, EditSoftwareForm, \
+    CommentForm, ReportForm, ContactForm
 from app.models import User, Source, Software, Tag, Category, \
     Comment, Report
 from flask_mail import Message
@@ -42,12 +43,6 @@ def autocomplete():
     list_titles1 = [r.as_dict() for r in res1]
     list_titles2 = [r.as_dict() for r in res2]
     return jsonify(list_titles1 + list_titles2)
-
-@bp.route('/_tag', methods=['GET'])
-def tag():
-    res1 = Tag.query.all()
-    list_tags = [r.as_dict() for r in res1]
-    return jsonify(list_tags)
 
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/index', methods=['GET', 'POST'])
@@ -108,7 +103,7 @@ def edit_source(id):
         Tag.source_id == Source.id, Source.id == id).first_or_404()
     category = Category.query.filter(
         Category.source_id == Source.id, Source.id == id).first_or_404()
-    form = SourceForm()
+    form = EditSourceForm()
     if form.validate_on_submit():
         source.title = form.title.data
         tag.tag = form.tag.data
@@ -193,7 +188,7 @@ def edit_software(id):
         Tag.software_id == Software.id, Software.id == id).first_or_404()
     category = Category.query.filter(
         Category.software_id == Software.id, Software.id == id).first_or_404()
-    form = SoftwareForm()
+    form = EditSoftwareForm()
     if form.validate_on_submit():
         software.title = form.title.data
         tag.tag = form.tag.data
