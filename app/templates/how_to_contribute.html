@@ -5,13 +5,16 @@
   <h1 class="text-center">{{_('Como contribuir?')}}</h1><br><br>
   <div class="col-md-12 text-justify">
     <p>Ficamos felizes que queira contribuir com o projeto! <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="#626262"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.111 2.18a7 7 0 1 1 7.778 11.64A7 7 0 0 1 4.11 2.18zm.556 10.809a6 6 0 1 0 6.666-9.978a6 6 0 0 0-6.666 9.978zM6.5 7a1 1 0 1 1-2 0a1 1 0 0 1 2 0zm5 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0zM8 11a3 3 0 0 1-2.65-1.58l-.87.48a4 4 0 0 0 7.12-.16l-.9-.43A3 3 0 0 1 8 11z"/></g></svg>
-    <br><br>Dados Livres, é desenvolvido pensando em ser um ambiente de compartilhamento e
+    <br><br>A plataforma Dados Livres, é desenvolvida pensando em ser um ambiente de compartilhamento e
       principalmente de colaboração de seus usuários. Confira abaixo algumas
       possíveis maneiras de realizar contribuições:</p><br><br>
-    <p><strong>Comunidade</strong><br><br>
+    <p><strong>Participe da comunidade</strong><br><br>
       A sua primeira contribuição pode ser entrar e participar da nossa comunidade
-      Dados Livres no <a href="#" id="color-red">Telegram</a>.</p><hr><br>
-    <p><strong>Fontes e Aplicações</strong><br><br>
+      Dados Livres no <a href="#" id="color-red" target="_blank">Telegram</a>.</p><hr><br>
+    <p><strong>Envie um feedback</strong><br><br>
+      Estamos em nossa primeira versão BETA de testes. Nos envie um feedback da sua experiência
+      com a plataforma dados livres na página de <a href="{{ url_for('main.about') }}" id="color-red" target="_blank">Contato</a>.</p><hr><br>
+    <p><strong>Cadastre Fontes e Aplicações</strong><br><br>
       Se <a href="{{url_for('auth.login')}}" id="color-red" target="_blank">inscreva-se</a>
       na Plataforma Dados Livres e colabore registrando <a href="{{url_for('main.register_source')}}" id="color-red" target="_blank">fontes</a> e
       <a href="{{url_for('main.register_software')}}" id="color-red" target="_blank">aplicações</a>
@@ -42,39 +45,49 @@
   </div><hr><br>
   <div class="row">
     <div class="col-md-12 text-justify">
-      <p><strong>Desenvolvimento de Software</strong><br><br>
-      A Plataforma Dados Livres é Software Livre licenciado sob Licença
-      <a href="https://www.gnu.org/licenses/licenses.en.html" id="color-red" target="_blank">GNU General Public License Version 3</a>
-      e seu código aberto é disponibilizado no repositório do <a href="https://gitlab.com/pbaesse/dados-livres" id="color-red" target="_blank">GitLab</a>.
+      <p><strong>Contribuia no desenvolvimento de software</strong><br><br>
+      A Plataforma Dados Livres é Software Livre licenciado sob
+      <a href="https://www.gnu.org/licenses/licenses.html" id="color-red" target="_blank">Licença GNU General Public License Version 3</a>
+      e seu código fonte pode ser acessado na plataforma do
+      <a href="https://gitlab.com/pbaesse/dados-livres" id="color-red" target="_blank">GitLab</a>.
       Confira algumas <a href="https://gitlab.com/pbaesse/dados-livres/-/boards" id="color-red" target="_blank">issues</a>
       abertas e para mais detalhes sobre o projeto e como instalar leia o arquivo
       <a href="https://gitlab.com/pbaesse/dados-livres/-/blob/master/README.md" id="color-red" target="_blank">Readme.me</a>.
       O sistema usa a linguagem de programação <a href="https://www.python.org/" id="color-red" target="_blank">Python</a>
       e o pequeno framework web <a href="https://flask.palletsprojects.com/en/1.1.x/" id="color-red" target="_blank">Flask</a>.</p><br>
       <p>Confira abaixo algumas possíveis maneiras para colaborar no desenvolvido de software:</p><br>
-      <p><strong>Design</strong><br><br>
+      <p><strong>Aplique conhecimentos de Design</strong><br><br>
       Aumente as interações e melhore a experiência dos usuários com a interface.
       Ajude a aplicar os fundamentos de design UX e UI. Contribua para que Dados
       Livres tenha um Design único de cores e fontes chamativas, além de uma
-      logo mais relacionada com o objetivo da plataforma.
-      <a href="https://gitlab.com/pbaesse/dados-livres/-/issues/10" id="color-red" target="_blank">Acesse o Link da issue</a>.</p><hr><br>
-      <p><strong>Traduções</strong><br><br>
+      logo mais relacionada com o objetivo da plataforma. <br><br>
+      <a href="https://gitlab.com/pbaesse/dados-livres/-/issues/10" id="color-red" target="_blank">
+        Para saber mais em como ajudar com o Design clique aqui</a>.</p><hr><br>
+      <p><strong>Melhore as traduções</strong><br><br>
       Melhore as traduções do sistema, contribua para que Dados Livres seja
       acessível em outros idiomas. Ajude a traduzir fontes e aplicações que
-      são registradas pelos próprios usuários da plataforma.
-      <a href="https://gitlab.com/pbaesse/dados-livres/-/issues/9" id="color-red" target="_blank">Acesse o Link da issue</a>.</p><hr><br>
-      <p><strong>Testes e Segurança</strong><br><br>
+      são registradas pelos próprios usuários da plataforma. <br><br>
+      <a href="https://gitlab.com/pbaesse/dados-livres/-/issues/9" id="color-red" target="_blank">
+        Para saber mais em como ajudar com as traduções clique aqui</a>.</p><hr><br>
+      <p><strong>Realize testes e melhorias na segurança</strong><br><br>
       Ajude a aplicar testes de software utilizando os conceitos de TDD,
       relatando bugs e melhorando a qualidade da nossa aplicação.
-      Reforce a segurança da plataforma encontrando possíveis falhas no sistema.
-      <a href="https://gitlab.com/pbaesse/dados-livres/-/issues/5" id="color-red" target="_blank">Acesse o Link da issue</a>.</p><hr><br>
-      <p><strong>Documentação</strong><br><br>
-      Ajude melhorando o texto de nossa documentação.
-      <a href="https://gitlab.com/pbaesse/dados-livres/-/issues/4" id="color-red" target="_blank">Acesse o Link da issue</a>.</p><hr><br>
-      <p><strong>API</strong><br><br>
+      Reforce a segurança da plataforma encontrando possíveis falhas no sistema. <br><br>
+      <a href="https://gitlab.com/pbaesse/dados-livres/-/issues/5" id="color-red" target="_blank">
+        Para saber mais em como ajudar com testes e segurança clique aqui</a>.</p><hr><br>
+      <p><strong>Relate por bugs no sistema</strong><br><br>
+      Ajude relatando possíveis bugs no sistema. <br><br>
+      <a href="https://gitlab.com/pbaesse/dados-livres/-/issues" id="color-red" target="_blank">
+        Para saber mais em como ajudar relatando bugs clique aqui</a>.</p><hr><br>
+      <p><strong>Contribua com a documentação</strong><br><br>
+      Ajude melhorando o texto de nossa documentação. <br><br>
+      <a href="https://gitlab.com/pbaesse/dados-livres/-/issues/15" id="color-red" target="_blank">
+        Para saber mais em como ajudar com a documentação clique aqui</a>.</p><hr><br>
+      <p><strong>Ajude no desenvolvimento da API</strong><br><br>
       Ajude no desenvolvimento de uma API Web para Dados Livres disponibilizada
-      em código aberto.
-      <a href="https://gitlab.com/pbaesse/dados-livres/-/issues/8" id="color-red" target="_blank">Acesse o Link da issue</a>.</p><hr><br>
+      em código aberto. <br><br>
+      <a href="https://gitlab.com/pbaesse/dados-livres/-/issues/8" id="color-red" target="_blank">
+        Para saber mais em como ajudar com a API clique aqui</a>.</p><hr><br><br>
   </div>
 </div>
 {% endblock %}
