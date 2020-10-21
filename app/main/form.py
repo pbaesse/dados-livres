@@ -47,7 +47,7 @@ class SourceForm(FlaskForm):
         Length(min=3), Unique(Source, Source.title,
         message='Já existe uma fonte registrada com esse título.')],
         render_kw={"placeholder": "Digite o título da Fonte de Dados Abertos"})
-    tag = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
+    keyword = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
         render_kw={"placeholder": "Digite as palavras-chaves da fonte"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
         choices=[('Corona Vírus','Corona Vírus'), ('Saúde', 'Saúde'),
@@ -78,7 +78,7 @@ class EditSourceForm(FlaskForm):
     title = StringField(_l('Título: *'), render_kw={"placeholder":
         "Digite o título da Fonte de Dados Abertos", "disabled": " "},
         description='Campo de editar título em implementação.')
-    tag = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
+    keyword = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
         render_kw={"placeholder": "Digite as palavras-chaves da fonte"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
         choices=[('Corona Vírus','Corona Vírus'), ('Saúde', 'Saúde'),
@@ -110,7 +110,7 @@ class SoftwareForm(FlaskForm):
         Length(min=3), Unique(Software, Software.title,
         message='Já existe uma aplicação registrada com esse título.')],
         render_kw={"placeholder": "Digite o título da Aplicação"})
-    tag = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
+    keyword = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
         render_kw={"placeholder": "Digite as palavras-chaves da Aplicação"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
         choices=[('Corona Vírus','Corona Vírus'), ('Saúde', 'Saúde'),
@@ -149,7 +149,7 @@ class EditSoftwareForm(FlaskForm):
     title = StringField(_l('Título: *'), render_kw={"placeholder":
         "Digite o título da Aplicação", "disabled": " "},
         description='Campo de editar título em implementação.')
-    tag = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
+    keyword = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
         render_kw={"placeholder": "Digite as palavras-chaves da Aplicação"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
         choices=[('Corona Vírus','Corona Vírus'), ('Saúde', 'Saúde'),
