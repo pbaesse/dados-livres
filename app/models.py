@@ -66,6 +66,13 @@ def load_user(id):
 	return User.query.get(int(id))
 
 
+tags = db.Table('tags',
+    db.Column('tag_id', db.Integer, db.ForeignKey('tag.id')),
+    db.Column('source_id', db.Integer, db.ForeignKey('source.id')),
+    db.Column('software_id', db.Integer, db.ForeignKey('software.id'))
+)
+
+
 class Source(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
@@ -77,7 +84,8 @@ class Source(db.Model):
     description = db.Column(db.String(800), index=True)
     officialLink = db.Column(db.String(300), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    tags = db.relationship('Tag', backref='source_tag', lazy='dynamic')
+    tags = db.relationship('Tag', secondary=tags,
+        backref=db.backref('source_tag', lazy='dynamic'))
     categories = db.relationship('Category', backref='source_category', lazy='dynamic')
     comments = db.relationship('Comment', backref='source_comment', lazy='dynamic')
     reports = db.relationship('Report', backref='source_report', lazy='dynamic')
@@ -100,7 +108,8 @@ class Software(db.Model):
     owner = db.Column(db.String(200), index=True)
     dateCreation = db.Column(db.String(200), index=True, default=datetime.utcnow)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    tags = db.relationship('Tag', backref='software_tag', lazy='dynamic')
+    tags = db.relationship('Tag', secondary=tags,
+        backref=db.backref('software_tag', lazy='dynamic'))
     categories = db.relationship('Category', backref='software_category', lazy='dynamic')
     comments = db.relationship('Comment', backref='software_comment', lazy='dynamic')
     reports = db.relationship('Report', backref='software_report', lazy='dynamic')
@@ -116,13 +125,11 @@ class Software(db.Model):
 class Tag(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    tag = db.Column(db.String(200), index=True)
+    keyword = db.Column(db.String(200), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    source_id = db.Column(db.Integer, db.ForeignKey('source.id'))
-    software_id = db.Column(db.Integer, db.ForeignKey('software.id'))
 
     def __repr__(self):
-        return '{}'.format(self.tag)
+        return '{}'.format(self.keyword)
 
 
 class Category(db.Model):
