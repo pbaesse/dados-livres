@@ -75,8 +75,9 @@ class SourceForm(FlaskForm):
 
 
 class EditSourceForm(FlaskForm):
-    title = StringField(_l('Título: *'), validators=[DataRequired(),
-        Length(min=3)], render_kw={"placeholder": "Digite o título da Fonte de Dados Abertos"})
+    title = StringField(_l('Título: *'), render_kw={"placeholder":
+        "Digite o título da Fonte de Dados Abertos", "disabled": " "},
+        description='Campo de editar título em implementação.')
     tag = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
         render_kw={"placeholder": "Digite as palavras-chaves da fonte"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
@@ -145,8 +146,9 @@ class SoftwareForm(FlaskForm):
 
 
 class EditSoftwareForm(FlaskForm):
-    title = StringField(_l('Título: *'), validators=[DataRequired(),
-        Length(min=3)], render_kw={"placeholder": "Digite o título da Aplicação"})
+    title = StringField(_l('Título: *'), render_kw={"placeholder":
+        "Digite o título da Aplicação", "disabled": " "},
+        description='Campo de editar título em implementação.')
     tag = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
         render_kw={"placeholder": "Digite as palavras-chaves da Aplicação"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
