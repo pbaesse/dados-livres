@@ -32,6 +32,12 @@ def autocomplete():
     list_titles2 = [r.as_dict() for r in res2]
     return jsonify(list_titles1 + list_titles2)
 
+@bp.route('/_tag', methods=['GET'])
+def tag():
+    keyword = Tag.query.all()
+    tags = [r.as_dict() for r in keyword]
+    return jsonify(tags)
+
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/index', methods=['GET', 'POST'])
 def index():
