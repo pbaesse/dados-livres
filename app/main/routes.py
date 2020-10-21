@@ -24,18 +24,6 @@ def before_request():
         db.session.commit()
     g.locale = str(get_locale())
 
-import unicodedata
-def remove_accents(category):
-    try:
-        category = unicode(category, 'utf-8')
-    except NameError: # unicode is a default on python 3
-        pass
-    category = unicodedata.normalize('NFD', category)\
-        .encode('ascii', 'ignore')\
-        .decode("utf-8")
-    category.strip()
-    return str(category.replace(" ", ""))
-
 @bp.route('/_autocomplete', methods=['GET'])
 def autocomplete():
     res1 = Software.query.all()
@@ -48,15 +36,16 @@ def autocomplete():
 @bp.route('/index', methods=['GET', 'POST'])
 def index():
     page = request.args.get('page', 1, type=int)
-    sources = db.session.query(Source.title, Source.sphere, Category.category,
-        Tag.tag).filter(Category.source_id == Source.id, Tag.source_id == Source.id).order_by(
+    sources = db.session.query(Source.title, Source.sphere,
+        Category.category, Tag.keyword).filter(
+        Category.source_id == Source.id, Source.tags).order_by(
         Source.timestamp.desc()).paginate(page=page, per_page=1)
-    softwares = db.session.query(Software.title, Software.owner, Software.license,
-        Category.category, Tag.tag).filter(
-        Category.software_id == Software.id, Tag.software_id == Software.id).order_by(
+    softwares = db.session.query(Software.title, Software.owner,
+        Software.license, Category.category, Tag.keyword).filter(
+        Category.software_id == Software.id, Software.tags).order_by(
         Software.timestamp.desc()).paginate(page=page, per_page=1)
     return render_template('index.html', title=(_('Página Inicial')),
-        sources=sources.items, softwares=softwares.items, remove_accents=remove_accents)
+        sources=sources.items, softwares=softwares.items)
 
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/source', methods=['GET', 'POST'])
@@ -81,32 +70,32 @@ def register_source():
         category = Category(category=form.category.data, source_id=source.id)
         db.session.add(category)
         db.session.flush()
-        tag = Tag(tag=form.tag.data, source_id=source.id)
+        tag = Tag(keyword=form.keyword.data)
         db.session.add(tag)
         db.session.flush()
+        source.tags.append(tag)
         db.session.commit()
-        flash(_('Você registrou uma nova Fonte de Dados Abertos'))
-    return render_template('register_source.html', title=(_('Cadastrar Fonte')),
-        form=form)
+        flash(_('A fonte "%s" foi registrada com sucesso.' % source.title))
+    return render_template('register_source.html',
+        title=(_('Cadastrar Fonte')), form=form)
 
 @bp.route('/source_profile/<title>', methods=['GET', 'POST'])
 def source_profile(title):
     source = Source.query.filter_by(title=title).first_or_404()
-    return render_template('source_profile.html', title=(_('Perfil da Fonte')),
-        source=source, remove_accents=remove_accents)
+    return render_template('source_profile.html',
+        title=(_('Perfil da Fonte')), source=source)
 
 @bp.route('/edit_source/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit_source(id):
     source = Source.query.get_or_404(id)
-    tag = Tag.query.filter(
-        Tag.source_id == Source.id, Source.id == id).first_or_404()
+    tag = Tag.query.filter(Source.tags, Source.id == id).first_or_404()
     category = Category.query.filter(
         Category.source_id == Source.id, Source.id == id).first_or_404()
     form = EditSourceForm()
     if form.validate_on_submit():
-        source.title = form.title.data
-        tag.tag = form.tag.data
+        #source.title = form.title.data
+        tag.keyword = form.keyword.data
         category.category = form.category.data
         source.officialLink = form.officialLink.data
         source.sphere = form.sphere.data
@@ -121,9 +110,9 @@ def edit_source(id):
         db.session.add(category)
         db.session.flush()
         db.session.commit()
-        flash(_('As alterações foram salvas'))
+        flash(_('A fonte "%s" foi editada com sucesso.' % source.title))
     form.title.data = source.title
-    form.tag.data = tag.tag
+    form.keyword.data = tag.keyword
     form.category.data = category.category
     form.officialLink.data = source.officialLink
     form.sphere.data = source.sphere
@@ -132,14 +121,13 @@ def edit_source(id):
     form.country.data = source.country
     form.description.data = source.description
     return render_template('edit_source.html', title=(_('Editar Fonte')),
-                           form=form, source=source, tag=tag, category=category)
+            form=form, source=source, tag=tag, category=category)
 
 @bp.route("/deletar_source/<int:id>")
 @login_required
 def deletar_source(id):
     source = Source.query.filter_by(id=id).first()
-    tag = Tag.query.filter(
-        Tag.source_id == Source.id, Source.id == id).first_or_404()
+    tag = Tag.query.filter(Source.tags, Source.id == id).first_or_404()
     category = Category.query.filter(
         Category.source_id == Source.id, Source.id == id).first_or_404()
     db.session.delete(source)
@@ -149,7 +137,7 @@ def deletar_source(id):
     db.session.delete(category)
     db.session.flush()
     db.session.commit()
-    flash(_('A fonte foi apagada'))
+    flash(_('A fonte "%s" foi apagada com sucesso.' % source.title))
     return redirect(url_for("main.index"))
 
 @bp.route('/register_software', methods=['GET', 'POST'])
@@ -166,32 +154,32 @@ def register_software():
         category = Category(category=form.category.data, software_id=software.id)
         db.session.add(category)
         db.session.flush()
-        tag = Tag(tag=form.tag.data, software_id=software.id)
+        tag = Tag(keyword=form.keyword.data)
         db.session.add(tag)
         db.session.flush()
+        software.tags.append(tag)
         db.session.commit()
-        flash(_('Você registrou uma nova Aplicação'))
+        flash('A aplicação "%s" foi registrada com sucesso.' % software.title)
     return render_template('register_software.html',
-            title=(_('Cadastrar Aplicação')), form=form)
+        title=(_('Cadastrar Aplicação')), form=form)
 
 @bp.route('/software_profile/<title>', methods=['GET', 'POST'])
 def software_profile(title):
     software = Software.query.filter_by(title=title).first_or_404()
-    return render_template('software_profile.html', title=(_('Perfil da Aplicação')),
-        software=software, remove_accents=remove_accents)
+    return render_template('software_profile.html',
+        title=(_('Perfil da Aplicação')), software=software)
 
 @bp.route('/edit_software/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit_software(id):
     software = Software.query.get_or_404(id)
-    tag = Tag.query.filter(
-        Tag.software_id == Software.id, Software.id == id).first_or_404()
+    tag = Tag.query.filter(Software.tags, Software.id == id).first_or_404()
     category = Category.query.filter(
         Category.software_id == Software.id, Software.id == id).first_or_404()
     form = EditSoftwareForm()
     if form.validate_on_submit():
-        software.title = form.title.data
-        tag.tag = form.tag.data
+        #software.title = form.title.data
+        tag.keyword = form.keyword.data
         category.category = form.category.data
         software.officialLink = form.officialLink.data
         software.owner = form.owner.data
@@ -205,9 +193,9 @@ def edit_software(id):
         db.session.add(category)
         db.session.flush()
         db.session.commit()
-        flash(_('Suas alterações foram salvas'))
+        flash(_('A aplicação "%s" foi editada com sucesso.' % software.title))
     form.title.data = software.title
-    form.tag.data = tag.tag
+    form.keyword.data = tag.keyword
     form.category.data = category.category
     form.officialLink.data = software.officialLink
     form.owner.data = software.owner
@@ -221,8 +209,7 @@ def edit_software(id):
 @login_required
 def deletar_software(id):
     software = Software.query.filter_by(id=id).first()
-    tag = Tag.query.filter(
-        Tag.software_id == Software.id, Software.id == id).first_or_404()
+    tag = Tag.query.filter(Software.tags, Software.id == id).first_or_404()
     category = Category.query.filter(
         Category.software_id == Software.id, Software.id == id).first_or_404()
     db.session.delete(software)
@@ -232,22 +219,22 @@ def deletar_software(id):
     db.session.delete(category)
     db.session.flush()
     db.session.commit()
-    flash(_('A aplicação foi apagada'))
+    flash(_('A aplicação "%s" foi apagada com sucesso.' % software.title))
     return redirect(url_for("main.index"))
 
 @bp.route('/user/<nickname>', methods=['GET', 'POST'])
 def user(nickname):
     user = User.query.filter_by(nickname=nickname).first_or_404()
     sources = db.session.query(Source.title, Source.sphere,
-        Category.category, Tag.tag).filter(Category.source_id == Source.id,
-        Tag.source_id == Source.id, Source.user_id == user.id).order_by(
-        Source.timestamp.desc()).all()
-    softwares = db.session.query(Software.title, Software.owner, Software.license,
-        Category.category, Tag.tag).filter(Category.software_id == Software.id,
-        Tag.software_id == Software.id, Software.user_id == user.id).order_by(
-        Software.timestamp.desc()).all()
+        Category.category, Tag.keyword).filter(
+        Category.source_id == Source.id, Source.tags,
+        Source.user_id == user.id).order_by(Source.timestamp.desc()).all()
+    softwares = db.session.query(Software.title, Software.owner,
+        Software.license, Category.category, Tag.keyword).filter(
+        Category.software_id == Software.id, Software.tags,
+        Software.user_id == user.id).order_by(Software.timestamp.desc()).all()
     return render_template('user.html', title=(_('Perfil do Usuário')),
-        user=user, sources=sources, softwares=softwares, remove_accents=remove_accents)
+        user=user, sources=sources, softwares=softwares)
 
 @bp.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -273,7 +260,7 @@ def deletar_user(id):
     user = User.query.filter_by(id=id).first()
     db.session.delete(user)
     db.session.commit()
-    flash(_('O Usuário foi excluído'))
+    flash(_('O usuário "%s" foi excluído.' % user.username))
     return redirect(url_for("main.index"))
 
 @bp.route('/edit_password', methods=["GET", "POST"])
