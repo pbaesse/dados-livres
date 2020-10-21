@@ -12,16 +12,17 @@
       <p>{% if user.about_me %}{{ user.about_me }}{% endif %}</p>
       {% if user == current_user %}
         <p><a href="{{ url_for('main.edit_profile', id=user.id) }}" id="color-red">{{_('Editar Perfil')}}</a></p>
+        <!-- <p><a href="{{ url_for('main.deletar_user', id=user.id) }}" id="color-red">{{_('Apagar Perfil')}}</a></p> -->
       {% endif %}
     </div>
   </div><br><br>
     <div class="row">
       <div class="col-md-12">
-        <h4>{{_('Fontes registradas por')}} {{ user.username }}:</h4><br>
+        <h4>{{_('Fontes registradas por')}} {{ user.username }}:</h4>
         {% for source in sources %}
           <hr>{% include '_source.html' %}<hr>
         {% endfor %}<br><br>
-        <h4>{{_('Aplicações registradas por')}} {{ user.username }}:</h4><br>
+        <h4>{{_('Aplicações registradas por')}} {{ user.username }}:</h4>
         {% for software in softwares %}
           <hr>{% include '_software.html' %}<hr>
         {% endfor %}
