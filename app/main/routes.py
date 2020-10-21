@@ -24,13 +24,13 @@ def before_request():
         db.session.commit()
     g.locale = str(get_locale())
 
-@bp.route('/_autocomplete', methods=['GET'])
-def autocomplete():
-    res1 = Software.query.all()
-    res2 = Source.query.all()
-    list_titles1 = [r.as_dict() for r in res1]
-    list_titles2 = [r.as_dict() for r in res2]
-    return jsonify(list_titles1 + list_titles2)
+@bp.route('/_title', methods=['GET'])
+def title():
+    source_title = Source.query.all()
+    software_title = Software.query.all()
+    sources = [r.as_dict() for r in source_title]
+    softwares = [r.as_dict() for r in software_title]
+    return jsonify(sources + softwares)
 
 @bp.route('/_tag', methods=['GET'])
 def tag():
