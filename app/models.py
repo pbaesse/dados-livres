@@ -135,7 +135,7 @@ class Software(db.Model):
 class Tag(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    keyword = db.Column(db.String(200), index=True)
+    keyword = db.Column(db.String(500), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def __repr__(self):
