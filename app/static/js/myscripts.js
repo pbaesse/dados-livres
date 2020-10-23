@@ -43,3 +43,50 @@ $(document).ready(function () {
     source: titles
   });
 });
+
+
+$(document).ready(function () {
+  var tagsList = [
+
+  ];
+
+  var split = function(val) {
+      return val.split(",");
+  };
+
+  var extractLast = function(term) {
+      return split(term).pop();
+  };
+
+  function loadTags() {
+    $.getJSON('/_tag', function (data, status, xhr) {
+      for (var i = 0; i < data.length; i++) {
+        tagsList.push(data[i].keyword);
+      }
+    });
+  };
+
+  loadTags();
+
+  $("#tag").on("keydown", function(event) {
+    if (event.keyCode === $.ui.keyCode.TAB && $(this).autocomplete("instance").menu.active) {
+      event.preventDefault();
+    }
+  }).autocomplete({
+    source: function(request, response) {
+      response( $.ui.autocomplete.filter(
+        tagsList, extractLast(request.term)));
+    },
+    focus: function() {
+      return false;
+    },
+    select: function(event, ui ) {
+      var terms = split(this.value);
+      terms.pop();
+      terms.push(ui.item.value);
+      terms.push("");
+      this.value = terms.join(", ");
+      return false;
+    }
+  });
+});
