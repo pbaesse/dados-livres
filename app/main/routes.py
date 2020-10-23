@@ -133,12 +133,9 @@ def edit_source(id):
 @login_required
 def deletar_source(id):
     source = Source.query.filter_by(id=id).first()
-    tag = Tag.query.filter(Source.tags, Source.id == id).first_or_404()
     category = Category.query.filter(
         Category.source_id == Source.id, Source.id == id).first_or_404()
     db.session.delete(source)
-    db.session.flush()
-    db.session.delete(tag)
     db.session.flush()
     db.session.delete(category)
     db.session.flush()
@@ -215,12 +212,9 @@ def edit_software(id):
 @login_required
 def deletar_software(id):
     software = Software.query.filter_by(id=id).first()
-    tag = Tag.query.filter(Software.tags, Software.id == id).first_or_404()
     category = Category.query.filter(
         Category.software_id == Software.id, Software.id == id).first_or_404()
     db.session.delete(software)
-    db.session.flush()
-    db.session.delete(tag)
     db.session.flush()
     db.session.delete(category)
     db.session.flush()
