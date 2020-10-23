@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 {% block app_content %}
-  <h1 class="text-center">{{ _('Bem-vindo à Dados Livres') }}</h1>
-  <p class="text-center">{{ _('Entre para Dados Livres e ajude a colaborar com
+  <h1 class="text-center">{{ _('Bem-vindo ao Dados Livres') }}</h1>
+  <p class="text-center">{{ _('Entre para o Dados Livres e ajude colaborando com
     diversas fontes e aplicações em dados abertos.') }}</p><br><br>
   <div class="row">
     <div class="col-md-3"></div>
@@ -11,7 +11,9 @@
     </div>
     <div class="col-md-3"></div>
   </div><br><br>
-  <p class="text-center">{{_('Esqueceu sua senha?')}}
-    <a href="{{ url_for( 'auth.reset_password_request' ) }}" id="color-red">{{_('Renomeie sua senha')}}</a><br>
-    {{_('Novo usuário?')}} <a href="{{ url_for( 'auth.register' ) }}" id="color-red">{{_('Inscreva-se')}}</a></p>
+  <p class="text-center">
+    <a href="{{ url_for( 'auth.reset_password_request' ) }}" id="color-red">
+    {{_('Renomeie sua senha')}}</a> |
+    <a href="{{ url_for( 'auth.register_request' ) }}" id="color-red">
+      {{_('Inscreva-se')}}</a></p>
 {% endblock %}
