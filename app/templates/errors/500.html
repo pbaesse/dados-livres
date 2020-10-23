@@ -6,7 +6,9 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <p><strong>{{_('Erro: 505')}}</strong><br>
-        {{_('O administrador foi notificado. Descupe pela incoveniência')}}</p>
+        {{_('O administrador foi notificado, descupe pela incoveniência!')}}
+        {{_('Caso deseje, <a href="{{ url_for('main.contact') }}"
+          id="color-red" target="_blank">entre em contato com conosco.')}}</a></p>
       <p><a href="{{ url_for('main.index') }}" id="color-red">{{_('Voltar para Dados Livres')}}</a></p>
     </div>
     <div class="col-md-3"></div>
