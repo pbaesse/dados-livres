@@ -3,19 +3,21 @@
 {% block app_content %}
   <div class="row">
     <div class="col-xs-8 col-md-12">
-      <img src="{{ user.avatar(100) }}" id="imagem_user" alt="foto de perfil do usuário">
-      <h1>{% if user.username %}{{ user.username }}{% endif %} <br>
+      <figure><img src="{{ user.avatar(100) }}" id="imagem_user" alt="foto de perfil do usuário"></figure>
+      <h1>{% if user.username %}{{ user.username }}{% endif %}
       <small>{% if user.nickname %}@{{ user.nickname }}{% endif %}</small></h1>
+      <small>Mude sua fonte de perfil criando uma conta em <a href="https://br.gravatar.com/"
+        id="color-red" target="_blank">Gravatar</a>.</small>
     </div></div>
   <div class="row">
     <div class="col-md-12">
-      <p>{% if user.about_me %}{{ user.about_me }}{% endif %}</p>
+      <p>{% if user.about_me %}{{ user.about_me }}{% endif %}</p><br>
       {% if user == current_user %}
         <p><a href="{{ url_for('main.edit_profile', id=user.id) }}" id="color-red">{{_('Editar Perfil')}}</a></p>
-        <!-- <p><a href="{{ url_for('main.deletar_user', id=user.id) }}" id="color-red">{{_('Apagar Perfil')}}</a></p> -->
+        <!--<p><a href="{{ url_for('main.deletar_user', id=user.id) }}" id="color-red">{{_('Apagar Perfil')}}</a></p>-->
       {% endif %}
     </div>
-  </div><br><br>
+  </div><hr><br><br>
     <div class="row">
       <div class="col-md-12">
         <h4>{{_('Fontes registradas por')}} {{ user.username }}:</h4>
@@ -27,5 +29,5 @@
           <hr>{% include '_software.html' %}<hr>
         {% endfor %}
       </div>
-    </div>
+    </div><br><br>
 {% endblock %}
