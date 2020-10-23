@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(200))
     about_me = db.Column(db.String(500))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+    confirmed = db.Column(db.Boolean, nullable=True, default=False)
     sources = db.relationship('Source', backref='author', lazy='dynamic')
     softwares = db.relationship('Software', backref='author', lazy='dynamic')
 
