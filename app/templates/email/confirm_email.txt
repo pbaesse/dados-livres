@@ -1,0 +1,14 @@
+{{_('Olá')}}, {{ user.username }}!
+
+{{_('Seja bem-vindo(a) a plataforma Dados Livres. Para confirmar a sua
+  inscrição a ')}}
+
+  {{ url_for('auth.register_confirm', token=token, _external=True) }}
+
+  {{_('clique neste link confirmar inscrição e ative sua conta.')}}
+
+{{_('Caso você não tenha solicitado confirmação de inscrição, simplesmente ignore está mensagem.')}}
+
+{{_('Atenciosamente')}},
+
+{{_('Dados Livres')}}
