@@ -46,9 +46,9 @@ class SourceForm(FlaskForm):
     title = StringField(_l('Título: *'), validators=[DataRequired(),
         Length(min=3), Unique(Source, Source.title,
         message='Já existe uma fonte registrada com esse título.')],
-        render_kw={"placeholder": "Digite o título da Fonte de Dados Abertos"})
-    keyword = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
-        render_kw={"placeholder": "Digite as palavras-chaves da fonte"})
+        render_kw={"placeholder": "Digite o título da fonte de dados abertos"})
+    keyword = StringField(_l('Palavras-Chaves: *'), id="tag", validators=[DataRequired()],
+        render_kw={"placeholder": "Digite as palavras-chaves"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
         choices=[('Corona Vírus','Corona Vírus'), ('Saúde', 'Saúde'),
         ('Educação', 'Educação'), ('Cinema', 'Cinema'), ('Música', 'Música'),
@@ -70,15 +70,15 @@ class SourceForm(FlaskForm):
     country = StringField(_l('País:'), id="internacional",
         render_kw={"placeholder": "Digite o país da fonte de dados abertos"})
     description = TextAreaField(_l('Descrição: *'), validators=[DataRequired(),
-        Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a Fonte de Dados Abertos"})
+        Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a fonte de dados abertos"})
     submit = SubmitField(_l('Registrar'))
 
 
 class EditSourceForm(FlaskForm):
     title = StringField(_l('Título: *'), render_kw={"placeholder":
-        "Digite o título da Fonte de Dados Abertos", "disabled": " "},
+        "Digite o título da fonte de dados abertos", "disabled": " "},
         description='Campo de editar título em implementação.')
-    keyword = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
+    keyword = StringField(_l('Palavras-Chaves: *'), id="tag", validators=[DataRequired()],
         render_kw={"placeholder": "Digite as palavras-chaves da fonte"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
         choices=[('Corona Vírus','Corona Vírus'), ('Saúde', 'Saúde'),
@@ -101,7 +101,7 @@ class EditSourceForm(FlaskForm):
     country = StringField(_l('País:'), id="internacional",
         render_kw={"placeholder": "Digite o país da fonte de dados abertos"})
     description = TextAreaField(_l('Descrição: *'), validators=[DataRequired(),
-        Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a Fonte de Dados Abertos"})
+        Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a fonte de dados abertos"})
     submit = SubmitField(_l('Registrar'))
 
 
@@ -109,9 +109,9 @@ class SoftwareForm(FlaskForm):
     title = StringField(_l('Título: *'), validators=[DataRequired(),
         Length(min=3), Unique(Software, Software.title,
         message='Já existe uma aplicação registrada com esse título.')],
-        render_kw={"placeholder": "Digite o título da Aplicação"})
-    keyword = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
-        render_kw={"placeholder": "Digite as palavras-chaves da Aplicação"})
+        render_kw={"placeholder": "Digite o título da aplicação"})
+    keyword = StringField(_l('Palavras-Chaves: *'), id="tag", validators=[DataRequired()],
+        render_kw={"placeholder": "Digite as palavras-chaves da aplicação"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
         choices=[('Corona Vírus','Corona Vírus'), ('Saúde', 'Saúde'),
         ('Educação', 'Educação'), ('Cinema', 'Cinema'), ('Música', 'Música'),
@@ -141,16 +141,16 @@ class SoftwareForm(FlaskForm):
         ('GNU Lesser General Public License v2.1','GNU Lesser General Public License v2.1'),
         ('Mozilla Public License 2.0','Mozilla Public License 2.0')], default=1)
     description = TextAreaField(_l('Descrição: *'), validators=[DataRequired(),
-        Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a Aplicação"})
+        Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a aplicação"})
     submit = SubmitField(_l('Registrar'))
 
 
 class EditSoftwareForm(FlaskForm):
     title = StringField(_l('Título: *'), render_kw={"placeholder":
-        "Digite o título da Aplicação", "disabled": " "},
+        "Digite o título da aplicação", "disabled": " "},
         description='Campo de editar título em implementação.')
-    keyword = StringField(_l('Palavras-Chaves: *'), id="tags", validators=[DataRequired()],
-        render_kw={"placeholder": "Digite as palavras-chaves da Aplicação"})
+    keyword = StringField(_l('Palavras-Chaves: *'), id="tag", validators=[DataRequired()],
+        render_kw={"placeholder": "Digite as palavras-chaves da aplicação"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
         choices=[('Corona Vírus','Corona Vírus'), ('Saúde', 'Saúde'),
         ('Educação', 'Educação'), ('Cinema', 'Cinema'), ('Música', 'Música'),
@@ -180,7 +180,7 @@ class EditSoftwareForm(FlaskForm):
         ('GNU Lesser General Public License v2.1','GNU Lesser General Public License v2.1'),
         ('Mozilla Public License 2.0','Mozilla Public License 2.0')], default=1)
     description = TextAreaField(_l('Descrição: *'), validators=[DataRequired(),
-        Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a Aplicação"})
+        Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a aplicação"})
     submit = SubmitField(_l('Registrar'))
 
 
