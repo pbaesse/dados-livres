@@ -1,12 +1,23 @@
 # Dados Livres - Plataforma de Dados Abertos
 
-**Plataforma Dados Livres que permite o compartilhamento e a colaboração na identificação de fontes de dados abertos e aplicações que fazem uso dessas informações.**
+**Plataforma Dados Livres permite o compartilhamento e a colaboração na
+identificação de fontes de dados abertos e aplicações que fazem uso dessas
+informações.**
 
-A iniciativa de desenvolver Dados Livres, surgiu inicialmente como um projeto de pesquisa em uma instituição acadêmica do IFRN, no ano de 2019, quando um aluno e uma aluna mostraram interesse de contribuir com projetos que fossem Software Livre e o Prof. Mr. Pedro Baesse apresentou a ideia de desenvolver a plataforma.
+A iniciativa de desenvolver Dados Livres surgiu inicialmente como um projeto
+de pesquisa em uma instituição acadêmica do RN, no ano de 2019, quando um aluno
+e uma aluna mostraram interesse de contribuir com projetos que fossem software
+livre e o Prof. Mr. Pedro Baesse apresentou a ideia de desenvolver a plataforma.
 
-Alguns diferenciais de Dados Livres é a praticidade, pois suas fontes e aplicações podem ser facilmente cadastradas por qualquer usuário inscrito na plataforma, sem exigir nenhum conhecimento de código, dessa forma, facilitando encontrar vários possíveis colaboradores. Além disso, suas bases de dados podem ser ligadas as aplicações criadas e vice-versa.
+Alguns diferenciais de Dados Livres é a praticidade, pois suas fontes e
+aplicações podem ser facilmente cadastradas por qualquer usuário inscrito na
+plataforma, sem exigir nenhum conhecimento de código, dessa forma, facilitando
+encontrar vários possíveis colaboradores. Além disso, suas bases de dados podem
+ser ligadas às aplicações criadas e vice-versa.
 
-A disponibilidade dessas informações abertas direcionadas a sociedade civil gera benefícios como: controle social, transparência pública, democracia, inovação cívica, combate a corrupção e vários outros.
+A disponibilidade dessas informações abertas direcionadas a sociedade civil gera
+benefícios como: controle social, transparência pública, democracia, inovação
+cívica, combate à corrupção e vários outros.
 
 # Problemas conhecidos e possíveis melhorias
 
