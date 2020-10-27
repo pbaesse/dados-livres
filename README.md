@@ -55,6 +55,12 @@ Acesse no seu navegador o seguinte endereço abaixo:
 ```sh
 http://localhost:5000/
 ```
+Criando o banco de dados:
+```sh
+$ flask db stamp head
+$ flask db migrate -m "criei o banco de dados"
+$ flask db upgrade
+```
 
 # Lista de autores
 - Carolina Soares ([@mariacarolinass](https://gitlab.com/mariacarolinass))
