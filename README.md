@@ -25,52 +25,65 @@ cívica, combate à corrupção e vários outros.
 
 Faça um fork do projeto Dados Livres e em seguida clone o repositório forkado
 por você:
+
 ```sh
 $ git clone https://gitlab.com/pbaesse/dados-livres.git
 $ cd dados-livres       (entre na pasta clonada)
 ```
+
 Use um ambiente virtual para fazer as instalações utilizadas na aplicação -
-Virtualenv:
-```sh
-$ virtualenv venv
-```
-Para criar o ambiente virtual:
+
+Para criar o ambiente virtual com o [venv](https://docs.python.org/pt-br/dev/library/venv.html):
+
 ```sh
 $ python3 -m venv venv
 ```
+
 Para ativar o ambiente virtual:
+
 ```sh
 $ source venv/bin/activate       (Linux)
 $ source venv\Script\activate    (Windows)
 ```
+
 E finalmente, instale as dependencias da aplicação:
+
 ```sh
 $ pip install -r requirements.txt
 ```
-Para rodar a aplicação utilize o comando:
-```sh
-$ flask run
-```
-Acesse no seu navegador o seguinte endereço abaixo:
-```sh
-http://localhost:5000/
-```
+
 Criando o banco de dados:
+
 ```sh
 $ flask db stamp head
 $ flask db migrate -m "criei o banco de dados"
 $ flask db upgrade
 ```
 
+Para rodar a aplicação utilize o comando:
+
+```sh
+$ flask run
+```
+
+Acesse no seu navegador o seguinte endereço abaixo:
+
+```sh
+http://localhost:5000/
+```
+
 # Lista de autores
+
 - Carolina Soares ([@mariacarolinass](https://gitlab.com/mariacarolinass))
 
 # Licença
+
 Dados Livres é Licenciado sob Licença GPL-3.0.
 
 # Contato
+
 E-mail para contato: pbaesse@gmail.com
 
 Outros meios de contato:
-- Telegram: [carols0](https://t.me/carols0) ou [pbaesse](https://t.me/pbaesse)
 
+- Telegram: [carols0](https://t.me/carols0) ou [pbaesse](https://t.me/pbaesse)
