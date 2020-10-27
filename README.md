@@ -23,12 +23,14 @@ cívica, combate à corrupção e vários outros.
 
 # Como instalar
 
-Faça um fork do projeto Dados Livres e em seguida clone o repositório Forkado por você:
+Faça um fork do projeto Dados Livres e em seguida clone o repositório forkado
+por você:
 ```sh
 $ git clone https://gitlab.com/pbaesse/dados-livres.git
 $ cd dados-livres       (entre na pasta clonada)
 ```
-Use um ambiente virtual para fazer as instalações utilizadas na aplicação - Virtualenv:
+Use um ambiente virtual para fazer as instalações utilizadas na aplicação -
+Virtualenv:
 ```sh
 $ virtualenv venv
 ```
@@ -41,7 +43,7 @@ Para ativar o ambiente virtual:
 $ source venv/bin/activate       (Linux)
 $ source venv\Script\activate    (Windows)
 ```
-E finalmente, instale a lista de pacotes da aplicação:
+E finalmente, instale as dependencias da aplicação:
 ```sh
 $ pip install -r requirements.txt
 ```
@@ -65,3 +67,4 @@ E-mail para contato: pbaesse@gmail.com
 
 Outros meios de contato:
 - Telegram: [carols0](https://t.me/carols0) ou [pbaesse](https://t.me/pbaesse)
+
