@@ -265,3 +265,5 @@ nosetests.xml
 venv*
 app.db
 plataforma.log*
+
+.env
