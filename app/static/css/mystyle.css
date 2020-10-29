@@ -1,17 +1,24 @@
 @charset "UTF-8";
 
+html,
+body {
+  height: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Roboto', sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif !important;
 }
 
 footer#footer {
-  background-color: #f6f6f6;
   padding: 0 0 0 0;
-  margin: 0 0 0 0;
+  margin-top: auto;
+  background-color: #f6f6f6;
 }
 
 p {
@@ -23,11 +30,14 @@ h4 {
 }
 
 .container {
-  margin-top:0;
-  margin-bottom:0;
+  padding: 20px 15px;
 }
 
-.navbar-brand  {
+.navbar {
+  margin-bottom: 0;
+}
+
+.navbar-brand {
   float: left;
   padding: 5px 5px 5px 10px;
 }
@@ -37,7 +47,7 @@ a#navbar {
 }
 
 a#navbar:hover {
-  color: #6A040F;
+  color: #6a040f;
   position: relative;
   display: flex;
   align-items: center;
@@ -67,28 +77,28 @@ div img#imagem_user {
 a#buttonIndex {
   padding: 20px;
   display: flex;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid #370617;
   border-radius: 6px;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   text-decoration: none;
   color: #9d0208;
-  margin-left:30px;
-  margin-right:30px;
-  transition: .1s linear all;
+  margin-left: 30px;
+  margin-right: 30px;
+  transition: 0.1s linear all;
 }
 
 a#buttonPerfil {
   max-width: 215px;
   padding: 10px;
   display: flex;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid #370617;
   border-radius: 6px;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   text-decoration: none;
-  color: #6A040F;
-  transition: .1s linear all;
+  color: #6a040f;
+  transition: 0.1s linear all;
 }
 
 .topic-grid-item {
@@ -97,15 +107,15 @@ a#buttonPerfil {
   display: flex;
   align-items: center;
   border: 1px solid #370617;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   justify-content: flex-start;
   flex-direction: row;
   margin-bottom: 17px;
   border-radius: 6px;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  transition: .1s linear all;
-  margin-left: .5%;
-  margin-right: .5%;
+  transition: 0.1s linear all;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
 }
 
 .topic-grid-item:hover {
@@ -122,20 +132,20 @@ a#category-link {
 a#color-red {
   text-decoration: none;
   color: #9d0208;
-  border-bottom: dotted 1px #6A040F;
+  border-bottom: dotted 1px #6a040f;
 }
 
 a#color-red:hover {
   text-decoration: none;
-  color: #6A040F;
+  color: #6a040f;
   border-bottom: none;
 }
 
-a#color-black{
+a#color-black {
   text-decoration: none;
-  color: #03071E;
+  color: #03071e;
 }
 
 a#color-black:hover {
- color: #9d0208;
+  color: #9d0208;
 }
