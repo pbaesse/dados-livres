@@ -51,6 +51,18 @@ E finalmente, instale as dependencias da aplicação:
 ```sh
 $ pip install -r requirements.txt
 ```
+## Configurando o projeto
+- Copie o arquivo .env-example e renomei para .env
+- Gere a `SECRET_KEY`
+
+```sh
+$ python
+>>> import uuid
+>>> uuid.uuid4().hex
+```
+- Copie o ID gerado cole na variável `SECRET_KEY`
+no arquivo `.env`.
+
 
 Criando o banco de dados:
 
